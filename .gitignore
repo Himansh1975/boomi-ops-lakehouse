@@ -1,0 +1,16 @@
+data/
+spark-warehouse/
+metastore_db/
+derby.log
+__pycache__/
+.pytest_cache/
+*.pyc
+logs/
+
+# credentials and local settings: never commit
+.env
+secrets/
+
+# personal plan and interview prep, kept local
+INTERVIEW_NOTES.md
+PLAN.md

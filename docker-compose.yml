@@ -1,0 +1,12 @@
+services:
+  # docker compose run --rm cli "python -m boomi_ops.run replay --start 2026-11-01 --days 7"
+  # docker compose run --rm cli "pytest -q"
+  cli:
+    build: .
+    image: boomi-ops-lakehouse:latest
+    entrypoint: ["/bin/bash", "-c"]
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - .:/opt/project
