@@ -56,11 +56,11 @@ def test_incremental_runs_converge_and_never_regress(spark, tmp_path):
 
     silver = lake.read("silver_executions")
     assert silver.count() == silver.select("execution_id").distinct().count() == len(world.executions)
-    assert silver.filter("NOT is_final").count() == 0  # every INPROCESS row got its final status
+    assert silver.filter("NOT is_final").count() == 0  # every running row got its final status
     truth = {e.record["executionId"]: e.record["status"] for e in world.executions}
     assert {r.execution_id: r.status for r in silver.select("execution_id", "status").collect()} == truth
 
-    # Re-load an early batch (it still has INPROCESS rows) through MERGE: nothing may go back to running.
+    # Re-load an early batch (it still has running rows) through MERGE: nothing may go back to running.
     from boomi_ops.transform.pipeline import merge_executions
     early = sorted(r[0] for r in lake.read("bronze_execution_records").select("_batch_id").distinct().collect())[:3]
     merge_executions(lake, early)

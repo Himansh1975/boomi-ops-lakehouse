@@ -1,0 +1,28 @@
+# Local Boomi basic runtime (formerly "Atom") that runs the demo processes.
+# Image docs: https://hub.docker.com/r/boomi/atom
+#
+#   1. Boomi UI > Integration > Manage > Runtime Management > New > Basic Runtime > generate an install token
+#   2. Put it in runtime/.env as INSTALL_TOKEN=... (the token expires in 30 min to 24 h; it's needed only for first install)
+#   3. docker compose -f runtime/compose.yml up -d
+#   4. The runtime shows up in Runtime Management (under Unattached Runtimes) within a few minutes
+#
+# Installed runtime files live in the Docker volume "boomi_runtime", so the container can be removed
+# and recreated without reinstalling. `docker compose -f runtime/compose.yml down -v` deletes it.
+services:
+  runtime:
+    image: boomi/atom:release
+    container_name: sim-runtime-01
+    hostname: sim-runtime-01
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      BOOMI_ATOMNAME: sim-runtime-01
+      ATOM_LOCALHOSTID: sim-runtime-01
+    volumes:
+      # named volume, not a Windows folder: avoids NTFS permission and file-locking problems
+      - boomi_runtime:/mnt/boomi
+    ports:
+      - "9090:9090"
+
+volumes:
+  boomi_runtime:

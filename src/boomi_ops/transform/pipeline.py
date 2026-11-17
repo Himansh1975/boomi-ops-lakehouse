@@ -127,7 +127,7 @@ def merge_executions(lake: Lake, batch_ids: list[str]) -> None:
     if not lake.exists("silver_executions"):
         lake.overwrite(src, "silver_executions")
         return
-    # Merge rule: a final status (COMPLETE/ERROR/...) beats INPROCESS no matter which arrived last,
+    # Merge rule: a final status (COMPLETE/ERROR/...) beats a running status (STARTED, INPROCESS, ...) no matter which arrived last,
     # so re-loading an old batch can never send a finished run back to "running".
     # Between two records of the same kind, the newer pull wins.
     (lake.delta("silver_executions").alias("t")

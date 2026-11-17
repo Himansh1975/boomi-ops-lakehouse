@@ -18,6 +18,11 @@ Checked against developer.boomi.com on 2026-11-17. Re-check before trusting in l
 | Deployments | `POST /DeployedPackage/query`. Fields: deploymentId, componentId, componentName, componentType, componentVersion, packageVersion, version, deployedDate, deployedBy, environmentId, active | [DeployedPackage](https://developer.boomi.com/docs/api/platformapi/DeployedPackage) |
 | Audit log | `POST /AuditLog/query`, filterable on date, type, action, userId, ... Kept 12 months | [AuditLog](https://developer.boomi.com/docs/api/platformapi/AuditLog) |
 
+## Seen on a live trial account (2026-11-17)
+- `executionDuration` really is `["Long", 5735]`, not a plain number.
+- A running job shows `status: "STARTED"` (not INPROCESS). It flips to `COMPLETE` about a minute later, which is why the 2h lookback matters.
+- Building components via `POST /Component` (XML), then `POST /PackagedComponent`, `POST /DeployedPackage`, `POST /ProcessSchedules/{id}` and `POST /ExecutionRequest`, all work on a trial account. See `scripts/setup_demo.py`.
+
 ## Not confirmed yet
 - The numeric rate limit for a trial account. One doc example mentions "five requests per second", so the client defaults to at most 4 requests per second.
 - Whether queries can sort by `executionTime` and page at the same time without gaps. The ingester doesn't depend on order; it MERGEs on `executionId`.

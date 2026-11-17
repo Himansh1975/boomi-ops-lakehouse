@@ -17,7 +17,7 @@ docker compose run --rm cli "python scripts/show_gold.py"
 
 Replay mode simulates a Boomi account with six demo processes, each failing in a known way. The pipeline pulls from it every simulated hour through **the same API client** used in live mode: same query/queryMore paging, same 503 retries.
 
-Live mode: copy `.env.example` to `.env`, fill in an API token, then run `python -m boomi_ops.run live`.
+Live mode: follow [docs/setup.md](docs/setup.md) (Boomi trial, local runtime, API token). Test the token with `python -m boomi_ops.run check`, then run `python -m boomi_ops.run live`.
 
 ## How it works
 
@@ -32,7 +32,7 @@ flowchart LR
 
 Design decisions worth asking about:
 
-- **Late-arriving status.** A run that's still going shows as `INPROCESS`. Each pull re-reads the last 2 hours, and the MERGE rule says a **final status always beats INPROCESS**. So re-loading an old batch can never send a finished run back to "running" (tested).
+- **Late-arriving status.** A run that's still going shows as `STARTED` (seen on a live account). Each pull re-reads the last 2 hours, and the MERGE rule says a **final status always beats a running one**. So re-loading an old batch can never send a finished run back to "running" (tested).
 - **Idempotent ingestion.** The batch id comes from the window end, and the watermark is saved only after the file is written. A crash just repeats a window.
 - **Boomi's number quirk.** The schema says `executionDuration` is int64, but responses show `["Long", 3832]`. Bronze keeps the raw JSON, and silver parses both forms (tested).
 - **Error fingerprints.** Masking IDs, numbers, quoted values, URLs and emails turns `row 17 ... "31-02-2026"` and `row 802 ... ""` into one incident. HTTP codes and ports are kept, because a 401 isn't a 500. The rules are written once and applied in both Spark and Python, and a test checks they agree.

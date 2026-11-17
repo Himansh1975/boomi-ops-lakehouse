@@ -1,6 +1,7 @@
 """Command line entry point.
 
   python -m boomi_ops.run replay --start 2026-11-01 --days 7    # no Boomi account needed
+  python -m boomi_ops.run check                                   # test the API token, read-only
   python -m boomi_ops.run live --since 2026-11-16                 # needs .env (see .env.example)
   python -m boomi_ops.run transform                               # landing -> bronze/silver/gold only
 """
@@ -65,10 +66,42 @@ def replay(start: datetime, days: int, data_root: Path, ingest_every_minutes: in
         print(_transform(data_root))
 
 
-def live(since: datetime, data_root: Path) -> None:
-    client = BoomiClient(http_transport(
+def _live_client() -> BoomiClient:
+    missing = [k for k in ("BOOMI_ACCOUNT_ID", "BOOMI_USERNAME", "BOOMI_API_TOKEN") if not os.environ.get(k)]
+    if missing:
+        raise SystemExit(f"missing in .env: {', '.join(missing)} (see .env.example)")
+    return BoomiClient(http_transport(
         os.environ.get("BOOMI_BASE_URL", "https://api.boomi.com/api/rest/v1"),
         os.environ["BOOMI_ACCOUNT_ID"], os.environ["BOOMI_USERNAME"], os.environ["BOOMI_API_TOKEN"]))
+
+
+def check(hours: int) -> None:
+    """One small read-only call per object type: proves the token works and shows what is there."""
+    from collections import Counter
+
+    from .client import BoomiApiError, between
+    from .timeutil import to_boomi
+
+    client = _live_client()
+    end = datetime.now(timezone.utc).replace(microsecond=0)
+    start = end - timedelta(hours=hours)
+    for obj, prop in (("ExecutionRecord", "executionTime"), ("DeployedPackage", "deployedDate")):
+        try:
+            rows = client.query_all(obj, between(prop, to_boomi(start), to_boomi(end)))
+        except BoomiApiError as e:
+            hint = {401: "token or username wrong (username must be your Boomi login email)",
+                    403: "your user lacks the API privilege, or the account has no Platform API access"}
+            raise SystemExit(f"{obj}: HTTP {e.status} - {hint.get(e.status, e.payload)}")
+        print(f"{obj}: {len(rows)} in the last {hours}h")
+        if obj == "ExecutionRecord" and rows:
+            print("  by status:", dict(Counter(r.get("status") for r in rows)))
+            print("  processes:", sorted({r.get("processName") for r in rows}))
+            print("  duration field looks like:", rows[0].get("executionDuration"))
+    print(f"OK: {client.requests_made} API calls, {client.retries_made} retries")
+
+
+def live(since: datetime, data_root: Path) -> None:
+    client = _live_client()
     for b in ingest(client, data_root / "landing", datetime.now(timezone.utc).replace(microsecond=0), since):
         print(f"{b.object_type}: {b.rows} rows for {b.window_start} .. {b.window_end}")
     print(_transform(data_root))
@@ -87,8 +120,12 @@ def main() -> None:
     lv.add_argument("--since", type=parse_cli, default=None,
                     help="first window start (default: 1 day ago); later runs use the watermark")
     sub.add_parser("transform", help="landing -> bronze/silver/gold only")
+    ck = sub.add_parser("check", help="test the API token with one read-only call per object")
+    ck.add_argument("--hours", type=int, default=24 * 7)
     a = p.parse_args()
-    if a.cmd == "replay":
+    if a.cmd == "check":
+        check(a.hours)
+    elif a.cmd == "replay":
         replay(a.start, a.days, a.data_root, a.ingest_every_minutes, a.transform)
     elif a.cmd == "live":
         live(a.since or datetime.now(timezone.utc) - timedelta(days=1), a.data_root)

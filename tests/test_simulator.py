@@ -24,12 +24,12 @@ def test_numbers_use_the_documented_long_array_form():
     assert rec["executionDuration"][0] == "Long" and isinstance(rec["executionDuration"][1], int)
 
 
-def test_running_runs_show_as_inprocess_then_finish():
+def test_running_runs_show_as_started_then_finish():
     w = World(START, 1)
     e = max(w.executions, key=lambda x: (x.end - x.start))
     mid = e.start + (e.end - e.start) / 2
     seen_mid = {r["executionId"]: r for r in w.visible_executions(mid)}
-    assert seen_mid[e.record["executionId"]]["status"] == "INPROCESS"
+    assert seen_mid[e.record["executionId"]]["status"] == "STARTED"
     seen_after = {r["executionId"]: r for r in w.visible_executions(e.end)}
     assert seen_after[e.record["executionId"]]["status"] == e.record["status"]
 

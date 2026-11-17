@@ -6,7 +6,7 @@ triage agent's eval set uses later.
 
 Records follow the documented ExecutionRecord shape, including the quirk that number fields come
 back as ["Long", 3832]. A run that has started but not finished at the query time is returned as
-INPROCESS, so the pipeline has to handle a status that changes later (late-arriving updates).
+STARTED (what a live account shows), so the pipeline has to handle a status that changes later (late-arriving updates).
 
 Everything is deterministic for a given (start, days, seed).
 """
@@ -261,7 +261,8 @@ class World:
                 out.append(e.record)
             else:
                 running = dict(e.record)
-                running.update(status="INPROCESS", message="", inboundErrorDocumentCount=0,
+                # a live account shows a running job as STARTED (seen 2026-11-17)
+                running.update(status="STARTED", message="", inboundErrorDocumentCount=0,
                                outboundDocumentCount=0, executionDuration=["Long", 0],
                                outboundDocumentSize=["Long", 0])
                 running.pop("recordedDate")

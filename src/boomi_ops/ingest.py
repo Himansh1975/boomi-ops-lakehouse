@@ -1,7 +1,7 @@
 """Incremental pull from the Platform API into landing files.
 
 Each object type keeps a watermark: the end of the last window it pulled. The next pull covers
-[watermark - lookback, now]. The overlap catches runs that were INPROCESS last time and have
+[watermark - lookback, now]. The overlap catches runs that were still running (STARTED) last time and have
 finished since; the duplicates it creates are removed later by the MERGE on executionId.
 
 Crash safety: the landing file is written first (temp file + rename), the watermark last. If the job
