@@ -1,0 +1,6 @@
+{
+ "get_no_parents_status": 400,
+ "get_no_parents_body": "{\"@type\":\"Error\",\"message\":\"No results found with given input\"}",
+ "get_unknown_id_status": 400,
+ "get_unknown_id_body": "{\"@type\":\"Error\",\"message\":\"No results found with given input\"}"
+}
