@@ -1,0 +1,959 @@
+{
+ "source": "live",
+ "generatedAt": "2026-11-18 07:30 UTC",
+ "nodes": [
+  {
+   "id": "0efb8183-8fca-474a-abf2-003cf05b8849",
+   "name": "Benefits API Push",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 7,
+   "failures": 1,
+   "docs": 7,
+   "lastRunAt": "2026-11-18T06:30Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-18T03:30Z",
+     "fingerprint": "8e3cea83250d5aed",
+     "error": "(<n>) - Error message received from Http Server, Code <n>: Unauthorized; Caused by: Error message received from Http Server, Code <n>: Unauthorized"
+    }
+   ]
+  },
+  {
+   "id": "89b3bc2a-857d-4435-8f34-569fddfdf5c8",
+   "name": "Common - Archive to Disk",
+   "type": "process",
+   "subType": null,
+   "kind": "subprocess",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-18T03:09Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 2,
+   "processesTotal": 2,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Contractor Directory Export",
+    "Employee Directory Export"
+   ],
+   "runs": 1,
+   "failures": 0,
+   "docs": 1,
+   "lastRunAt": "2026-11-18T03:09Z",
+   "risk": 2.77,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "3cbfff81-941c-45b7-a074-efdd76a98b5c",
+   "name": "Contractor Directory Export",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-18T03:09Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": "process never deployed",
+   "recentFailures": []
+  },
+  {
+   "id": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f",
+   "name": "Customer Master Sync",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:52Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 7,
+   "failures": 1,
+   "docs": 7,
+   "lastRunAt": "2026-11-18T06:30Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-18T06:00Z",
+     "fingerprint": "a2ecdbdc4eb929bc",
+     "error": "(-<n>) - jsonplaceholder.typicode.com; Caused by: jsonplaceholder.typicode.com"
+    }
+   ]
+  },
+  {
+   "id": "5a8442f8-b128-485b-afe3-70ad073926cb",
+   "name": "Directory Entry (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-18T03:09Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 2,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Contractor Directory Export",
+    "Employee Directory Export"
+   ],
+   "runs": 1,
+   "failures": 0,
+   "docs": 1,
+   "lastRunAt": "2026-11-18T03:09Z",
+   "risk": 2.77,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331",
+   "name": "Employee Directory Export",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-18T03:09Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 1,
+   "failures": 0,
+   "docs": 1,
+   "lastRunAt": "2026-11-18T03:09Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "de1132cd-f3dc-4688-a5a8-92c3bcd706f3",
+   "name": "GET benefits status",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Benefits API Push"
+   ],
+   "runs": 7,
+   "failures": 1,
+   "docs": 7,
+   "lastRunAt": "2026-11-18T06:30Z",
+   "risk": 4.16,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "f6a47e8a-3438-4a3f-bd6f-4637b4a4f9b9",
+   "name": "GET payroll ack",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Payroll Export"
+   ],
+   "runs": 3,
+   "failures": 2,
+   "docs": 3,
+   "lastRunAt": "2026-11-18T03:20Z",
+   "risk": 2.77,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "name": "GET users",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:29Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 4,
+   "processesTotal": 4,
+   "deployedProcesses": 3,
+   "usedBy": [
+    "Contractor Directory Export",
+    "Customer Master Sync",
+    "Employee Directory Export",
+    "HR Employee Sync"
+   ],
+   "runs": 23,
+   "failures": 2,
+   "docs": 23,
+   "lastRunAt": "2026-11-18T06:45Z",
+   "risk": 25.42,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "8afb531b-dd76-4d56-89f0-b29e896bf620",
+   "name": "GET vendor invoices",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Vendor Invoice Poller"
+   ],
+   "runs": 19,
+   "failures": 5,
+   "docs": 19,
+   "lastRunAt": "2026-11-18T06:50Z",
+   "risk": 5.99,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "b3e4ef36-e517-420c-92be-dc6a4d37ed31",
+   "name": "HR Employee Sync",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 3,
+   "modifiedAt": "2026-11-17T18:29Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 15,
+   "failures": 1,
+   "docs": 15,
+   "lastRunAt": "2026-11-18T06:45Z",
+   "risk": 0.0,
+   "deployedVersion": 3,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-18T06:00Z",
+     "fingerprint": "a2ecdbdc4eb929bc",
+     "error": "(-<n>) - jsonplaceholder.typicode.com; Caused by: jsonplaceholder.typicode.com"
+    }
+   ]
+  },
+  {
+   "id": "73644624-31eb-46cd-a693-d0cab434dc06",
+   "name": "JSONPlaceholder HTTP",
+   "type": "connector-settings",
+   "subType": "http",
+   "kind": "connection",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:29Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 4,
+   "processesTotal": 4,
+   "deployedProcesses": 3,
+   "usedBy": [
+    "Contractor Directory Export",
+    "Customer Master Sync",
+    "Employee Directory Export",
+    "HR Employee Sync"
+   ],
+   "runs": 23,
+   "failures": 2,
+   "docs": 23,
+   "lastRunAt": "2026-11-18T06:45Z",
+   "risk": 25.42,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "e09f1084-17ca-400f-84c7-0d5d588b2222",
+   "name": "Legacy Employee Profile (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-18T03:09Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": "nothing references it",
+   "recentFailures": []
+  },
+  {
+   "id": "3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "name": "Local Out Disk",
+   "type": "connector-settings",
+   "subType": "disk-sdk",
+   "kind": "connection",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:29Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 4,
+   "processesTotal": 6,
+   "deployedProcesses": 4,
+   "usedBy": [
+    "Common - Archive to Disk",
+    "Contractor Directory Export",
+    "Customer Master Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Timesheet Import"
+   ],
+   "runs": 27,
+   "failures": 2,
+   "docs": 27,
+   "lastRunAt": "2026-11-18T06:45Z",
+   "risk": 39.99,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "7ec93641-a9a5-494e-a546-d58b15d8a577",
+   "name": "Partner APIs (httpbin)",
+   "type": "connector-settings",
+   "subType": "http",
+   "kind": "connection",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 3,
+   "processesTotal": 3,
+   "deployedProcesses": 3,
+   "usedBy": [
+    "Benefits API Push",
+    "Payroll Export",
+    "Vendor Invoice Poller"
+   ],
+   "runs": 29,
+   "failures": 8,
+   "docs": 29,
+   "lastRunAt": "2026-11-18T06:50Z",
+   "risk": 20.41,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "175959a6-b737-4491-835b-a1134e636e99",
+   "name": "Payroll Export",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 3,
+   "failures": 2,
+   "docs": 3,
+   "lastRunAt": "2026-11-18T03:20Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-17T19:20Z",
+     "fingerprint": "7c104420ff8b3404",
+     "error": "(-<n>) - Read timed out; Caused by: Read timed out"
+    },
+    {
+     "at": "2026-11-17T18:52Z",
+     "fingerprint": "7c104420ff8b3404",
+     "error": "(-<n>) - Read timed out; Caused by: Read timed out"
+    }
+   ]
+  },
+  {
+   "id": "241c98e2-e5e2-4429-a609-347b4d4f2b13",
+   "name": "Timesheet Import",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 4,
+   "failures": 0,
+   "docs": 4,
+   "lastRunAt": "2026-11-18T06:05Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "c714a3b9-492a-42bd-88f0-79243a8da259",
+   "name": "User Record (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-18T03:09Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 2,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Contractor Directory Export",
+    "Employee Directory Export"
+   ],
+   "runs": 1,
+   "failures": 0,
+   "docs": 1,
+   "lastRunAt": "2026-11-18T03:09Z",
+   "risk": 2.77,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "8d44f096-e449-4302-acdd-50bf7bdffddc",
+   "name": "User to Directory Entry",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-18T03:09Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 2,
+   "processesTotal": 2,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Contractor Directory Export",
+    "Employee Directory Export"
+   ],
+   "runs": 1,
+   "failures": 0,
+   "docs": 1,
+   "lastRunAt": "2026-11-18T03:09Z",
+   "risk": 2.77,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "2db0daa8-4e13-4d9f-8241-6882dd02f100",
+   "name": "Vendor Invoice Poller",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:51Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 19,
+   "failures": 5,
+   "docs": 19,
+   "lastRunAt": "2026-11-18T06:50Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-18T06:50Z",
+     "fingerprint": "6e6573cd06d08982",
+     "error": "(<n>) - Error message received from Http Server, Code <n>: Service Unavailable; Caused by: Error message received from Http Server, Code <n>: Service Unavailable"
+    },
+    {
+     "at": "2026-11-18T06:40Z",
+     "fingerprint": "6e6573cd06d08982",
+     "error": "(<n>) - Error message received from Http Server, Code <n>: Service Unavailable; Caused by: Error message received from Http Server, Code <n>: Service Unavailable"
+    },
+    {
+     "at": "2026-11-18T06:30Z",
+     "fingerprint": "6e6573cd06d08982",
+     "error": "(<n>) - Error message received from Http Server, Code <n>: Service Unavailable; Caused by: Error message received from Http Server, Code <n>: Service Unavailable"
+    },
+    {
+     "at": "2026-11-18T06:10Z",
+     "fingerprint": "6e6573cd06d08982",
+     "error": "(<n>) - Error message received from Http Server, Code <n>: Service Unavailable; Caused by: Error message received from Http Server, Code <n>: Service Unavailable"
+    },
+    {
+     "at": "2026-11-18T06:00Z",
+     "fingerprint": "6e6573cd06d08982",
+     "error": "(<n>) - Error message received from Http Server, Code <n>: Service Unavailable; Caused by: Error message received from Http Server, Code <n>: Service Unavailable"
+    }
+   ]
+  },
+  {
+   "id": "756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "name": "Write file",
+   "type": "connector-action",
+   "subType": "disk-sdk",
+   "kind": "operation",
+   "folder": "HR Employee Sync",
+   "version": 1,
+   "modifiedAt": "2026-11-17T18:29Z",
+   "modifiedBy": "user-4b846b1b",
+   "processesDirect": 4,
+   "processesTotal": 6,
+   "deployedProcesses": 4,
+   "usedBy": [
+    "Common - Archive to Disk",
+    "Contractor Directory Export",
+    "Customer Master Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Timesheet Import"
+   ],
+   "runs": 27,
+   "failures": 2,
+   "docs": 27,
+   "lastRunAt": "2026-11-18T06:45Z",
+   "risk": 39.99,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  }
+ ],
+ "edges": [
+  {
+   "id": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331>5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "source": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331",
+   "target": "5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get users"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331>73644624-31eb-46cd-a693-d0cab434dc06",
+   "source": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331",
+   "target": "73644624-31eb-46cd-a693-d0cab434dc06",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get users"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331>89b3bc2a-857d-4435-8f34-569fddfdf5c8",
+   "source": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331",
+   "target": "89b3bc2a-857d-4435-8f34-569fddfdf5c8",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive to disk"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "175959a6-b737-4491-835b-a1134e636e99>f6a47e8a-3438-4a3f-bd6f-4637b4a4f9b9",
+   "source": "175959a6-b737-4491-835b-a1134e636e99",
+   "target": "f6a47e8a-3438-4a3f-bd6f-4637b4a4f9b9",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Send to payroll provider"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "241c98e2-e5e2-4429-a609-347b4d4f2b13>756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "source": "241c98e2-e5e2-4429-a609-347b4d4f2b13",
+   "target": "756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f>756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "source": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f",
+   "target": "756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3cbfff81-941c-45b7-a074-efdd76a98b5c>5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "source": "3cbfff81-941c-45b7-a074-efdd76a98b5c",
+   "target": "5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get users"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3cbfff81-941c-45b7-a074-efdd76a98b5c>73644624-31eb-46cd-a693-d0cab434dc06",
+   "source": "3cbfff81-941c-45b7-a074-efdd76a98b5c",
+   "target": "73644624-31eb-46cd-a693-d0cab434dc06",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get users"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3cbfff81-941c-45b7-a074-efdd76a98b5c>8d44f096-e449-4302-acdd-50bf7bdffddc",
+   "source": "3cbfff81-941c-45b7-a074-efdd76a98b5c",
+   "target": "8d44f096-e449-4302-acdd-50bf7bdffddc",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to directory entry"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "89b3bc2a-857d-4435-8f34-569fddfdf5c8>3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "source": "89b3bc2a-857d-4435-8f34-569fddfdf5c8",
+   "target": "3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "8d44f096-e449-4302-acdd-50bf7bdffddc>c714a3b9-492a-42bd-88f0-79243a8da259",
+   "source": "8d44f096-e449-4302-acdd-50bf7bdffddc",
+   "target": "c714a3b9-492a-42bd-88f0-79243a8da259",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331>8d44f096-e449-4302-acdd-50bf7bdffddc",
+   "source": "00a2eb2e-55a7-4c91-8b6e-fb3df87a7331",
+   "target": "8d44f096-e449-4302-acdd-50bf7bdffddc",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to directory entry"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f>5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "source": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f",
+   "target": "5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get customers"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3cbfff81-941c-45b7-a074-efdd76a98b5c>89b3bc2a-857d-4435-8f34-569fddfdf5c8",
+   "source": "3cbfff81-941c-45b7-a074-efdd76a98b5c",
+   "target": "89b3bc2a-857d-4435-8f34-569fddfdf5c8",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive to disk"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "89b3bc2a-857d-4435-8f34-569fddfdf5c8>756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "source": "89b3bc2a-857d-4435-8f34-569fddfdf5c8",
+   "target": "756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "b3e4ef36-e517-420c-92be-dc6a4d37ed31>5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "source": "b3e4ef36-e517-420c-92be-dc6a4d37ed31",
+   "target": "5d12f4ae-b0a5-4034-bcb7-48e185d720f5",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get users"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "0efb8183-8fca-474a-abf2-003cf05b8849>7ec93641-a9a5-494e-a546-d58b15d8a577",
+   "source": "0efb8183-8fca-474a-abf2-003cf05b8849",
+   "target": "7ec93641-a9a5-494e-a546-d58b15d8a577",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Push to benefits API"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "0efb8183-8fca-474a-abf2-003cf05b8849>de1132cd-f3dc-4688-a5a8-92c3bcd706f3",
+   "source": "0efb8183-8fca-474a-abf2-003cf05b8849",
+   "target": "de1132cd-f3dc-4688-a5a8-92c3bcd706f3",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Push to benefits API"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "175959a6-b737-4491-835b-a1134e636e99>7ec93641-a9a5-494e-a546-d58b15d8a577",
+   "source": "175959a6-b737-4491-835b-a1134e636e99",
+   "target": "7ec93641-a9a5-494e-a546-d58b15d8a577",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Send to payroll provider"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "241c98e2-e5e2-4429-a609-347b4d4f2b13>3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "source": "241c98e2-e5e2-4429-a609-347b4d4f2b13",
+   "target": "3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2db0daa8-4e13-4d9f-8241-6882dd02f100>7ec93641-a9a5-494e-a546-d58b15d8a577",
+   "source": "2db0daa8-4e13-4d9f-8241-6882dd02f100",
+   "target": "7ec93641-a9a5-494e-a546-d58b15d8a577",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get vendor invoices"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f>3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "source": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f",
+   "target": "3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "8d44f096-e449-4302-acdd-50bf7bdffddc>5a8442f8-b128-485b-afe3-70ad073926cb",
+   "source": "8d44f096-e449-4302-acdd-50bf7bdffddc",
+   "target": "5a8442f8-b128-485b-afe3-70ad073926cb",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "b3e4ef36-e517-420c-92be-dc6a4d37ed31>756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "source": "b3e4ef36-e517-420c-92be-dc6a4d37ed31",
+   "target": "756c5164-791f-4fe5-b4ab-8e70919d9dbb",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2db0daa8-4e13-4d9f-8241-6882dd02f100>8afb531b-dd76-4d56-89f0-b29e896bf620",
+   "source": "2db0daa8-4e13-4d9f-8241-6882dd02f100",
+   "target": "8afb531b-dd76-4d56-89f0-b29e896bf620",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get vendor invoices"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f>73644624-31eb-46cd-a693-d0cab434dc06",
+   "source": "35a71040-b513-48fe-a8d9-6e71b5c9fe5f",
+   "target": "73644624-31eb-46cd-a693-d0cab434dc06",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get customers"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "b3e4ef36-e517-420c-92be-dc6a4d37ed31>3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "source": "b3e4ef36-e517-420c-92be-dc6a4d37ed31",
+   "target": "3181fb72-4f62-40b4-af59-7cdbd6010d1c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "b3e4ef36-e517-420c-92be-dc6a4d37ed31>73644624-31eb-46cd-a693-d0cab434dc06",
+   "source": "b3e4ef36-e517-420c-92be-dc6a4d37ed31",
+   "target": "73644624-31eb-46cd-a693-d0cab434dc06",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get users"
+   ],
+   "dangling": false
+  }
+ ]
+}

@@ -1,0 +1,3946 @@
+{
+ "source": "replay",
+ "generatedAt": "2026-11-18 07:30 UTC",
+ "nodes": [
+  {
+   "id": "51a06127-346d-59bb-9079-4d45eba058bd",
+   "name": "Benefit Enrollment (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Benefits API Push"
+   ],
+   "runs": 192,
+   "failures": 8,
+   "docs": 5171,
+   "lastRunAt": "2026-11-04T23:32Z",
+   "risk": 10.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "name": "Benefits API Push",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 192,
+   "failures": 8,
+   "docs": 5171,
+   "lastRunAt": "2026-11-04T23:32Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-02T05:37Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    },
+    {
+     "at": "2026-11-02T05:00Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    },
+    {
+     "at": "2026-11-02T04:36Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    },
+    {
+     "at": "2026-11-02T04:07Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    },
+    {
+     "at": "2026-11-02T03:33Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    },
+    {
+     "at": "2026-11-02T03:00Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    },
+    {
+     "at": "2026-11-02T02:33Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    },
+    {
+     "at": "2026-11-02T02:06Z",
+     "fingerprint": "e521dfdafb97db30",
+     "error": "HTTP 401 Unauthorized: The access token expired or is invalid (connection 'Benefits Vendor REST')"
+    }
+   ]
+  },
+  {
+   "id": "bf6b552e-5506-572f-b9f5-cfff20bcf55a",
+   "name": "Benefits Plan Refresh",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "2d22d368-3b4f-5c77-8dbb-cc381285e456",
+   "name": "Benefits Vendor REST",
+   "type": "connector-settings",
+   "subType": "http",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 2,
+   "processesTotal": 2,
+   "deployedProcesses": 2,
+   "usedBy": [
+    "Benefits API Push",
+    "Benefits Plan Refresh"
+   ],
+   "runs": 192,
+   "failures": 8,
+   "docs": 5171,
+   "lastRunAt": "2026-11-04T23:32Z",
+   "risk": 21.05,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "e4db6ebe-3b2d-595e-9192-033f3048eabc",
+   "name": "CRM Contact (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Customer Master Sync"
+   ],
+   "runs": 192,
+   "failures": 33,
+   "docs": 9902,
+   "lastRunAt": "2026-11-04T23:38Z",
+   "risk": 10.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "53a2f3bb-64ef-5ff0-b9e4-e7865b9d0192",
+   "name": "CRM REST",
+   "type": "connector-settings",
+   "subType": "http",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 2,
+   "processesTotal": 2,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Contractor Onboarding",
+    "Customer Master Sync"
+   ],
+   "runs": 192,
+   "failures": 33,
+   "docs": 9902,
+   "lastRunAt": "2026-11-04T23:38Z",
+   "risk": 21.05,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "name": "Common - Archive to Disk",
+   "type": "process",
+   "subType": null,
+   "kind": "subprocess",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 6,
+   "processesTotal": 6,
+   "deployedProcesses": 6,
+   "usedBy": [
+    "Customer Master Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Payroll Export SFTP",
+    "Timesheet Import"
+   ],
+   "runs": 768,
+   "failures": 44,
+   "docs": 121835,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 79.74,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "name": "Common - Error Handler",
+   "type": "process",
+   "subType": null,
+   "kind": "subprocess",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 14,
+   "processesTotal": 15,
+   "deployedProcesses": 12,
+   "usedBy": [
+    "Benefits API Push",
+    "Benefits Plan Refresh",
+    "Contractor Onboarding",
+    "Customer Master Sync",
+    "Department Sync",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Payroll Ack Poller",
+    "Payroll Export SFTP",
+    "Position Sync",
+    "Retry Worker",
+    "Retry Wrapper",
+    "Timesheet Import",
+    "Vendor Invoice Listener",
+    "Vendor Invoice Status Push"
+   ],
+   "runs": 1567,
+   "failures": 91,
+   "docs": 128134,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 220.73,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "name": "Common - Get OAuth Token",
+   "type": "process",
+   "subType": null,
+   "kind": "subprocess",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 5,
+   "processesTotal": 5,
+   "deployedProcesses": 4,
+   "usedBy": [
+    "Copy of HR Employee Sync",
+    "Department Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Position Sync"
+   ],
+   "runs": 384,
+   "failures": 4,
+   "docs": 43351,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 59.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4",
+   "name": "Contractor Onboarding",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Sandbox",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": "process never deployed",
+   "recentFailures": []
+  },
+  {
+   "id": "358848f7-b76d-5fc3-b130-338c4d5b9a63",
+   "name": "Copy of HR Employee Sync",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Sandbox",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": "process never deployed",
+   "recentFailures": []
+  },
+  {
+   "id": "6145af61-2bee-5d59-b997-b6679ab6cb3a",
+   "name": "Customer (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Customer Master Sync"
+   ],
+   "runs": 192,
+   "failures": 33,
+   "docs": 9902,
+   "lastRunAt": "2026-11-04T23:38Z",
+   "risk": 10.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "da53992e-9dc1-5e74-8ed1-221f9578bbd4",
+   "name": "Customer Master Sync",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "CRM",
+   "version": 3,
+   "modifiedAt": "2026-11-04T09:40Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 192,
+   "failures": 33,
+   "docs": 9902,
+   "lastRunAt": "2026-11-04T23:38Z",
+   "risk": 0.0,
+   "deployedVersion": 3,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-04T09:31Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T09:01Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T08:33Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T08:05Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T07:33Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T06:31Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T05:36Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T05:04Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T04:36Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T04:05Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T03:33Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T03:01Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T01:35Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T01:01Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T00:38Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-04T00:02Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T23:33Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T23:07Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T22:31Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T22:05Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T20:38Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T18:30Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T17:01Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T16:34Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T16:02Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T15:06Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T14:36Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T14:05Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T13:03Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T12:30Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T12:02Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T11:30Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    },
+    {
+     "at": "2026-11-03T10:32Z",
+     "fingerprint": "a209143782272217",
+     "error": "Map function 'formatPhone' failed: java.lang.NullPointerException at line <n> of script"
+    }
+   ]
+  },
+  {
+   "id": "d04b5b54-9d06-5370-b6e8-5eea05848eee",
+   "name": "Customer Phone Formatter",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": "nothing references it",
+   "recentFailures": []
+  },
+  {
+   "id": "9c92e5d3-0e45-52b2-9882-8105b7f738ee",
+   "name": "Customer to CRM Contact",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Customer Master Sync"
+   ],
+   "runs": 192,
+   "failures": 33,
+   "docs": 9902,
+   "lastRunAt": "2026-11-04T23:38Z",
+   "risk": 10.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "52b1916e-ab60-5ac5-a989-fa9d1eb33fab",
+   "name": "DW Employee Row (DB)",
+   "type": "profile.db",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 4,
+   "deployedProcesses": 3,
+   "usedBy": [
+    "Copy of HR Employee Sync",
+    "Department Sync",
+    "HR Employee Sync",
+    "Position Sync"
+   ],
+   "runs": 384,
+   "failures": 4,
+   "docs": 43351,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 47.63,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "c86597da-81ae-5ced-9119-723c3c5cac63",
+   "name": "DW Invoice Row (DB)",
+   "type": "profile.db",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Vendor Invoice Listener"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 12.82,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "402997cf-9e71-509b-afb7-655010cad444",
+   "name": "Data Warehouse DB",
+   "type": "connector-settings",
+   "subType": "database",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 9,
+   "processesTotal": 9,
+   "deployedProcesses": 8,
+   "usedBy": [
+    "Benefits Plan Refresh",
+    "Copy of HR Employee Sync",
+    "Department Sync",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Payroll Ack Poller",
+    "Position Sync",
+    "Timesheet Import",
+    "Vendor Invoice Listener"
+   ],
+   "runs": 1087,
+   "failures": 46,
+   "docs": 91702,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 125.86,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "951f70b7-7d2a-5e7d-8222-59f9f57ea0a7",
+   "name": "Department (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Department Sync"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "name": "Department Sync",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "5a531e4f-4c16-59ad-a61a-557065f82ff1",
+   "name": "Department to DW Employee Row",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Department Sync"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "name": "Employee (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 4,
+   "deployedProcesses": 3,
+   "usedBy": [
+    "Benefits API Push",
+    "Copy of HR Employee Sync",
+    "HR Employee Sync",
+    "Payroll Export SFTP"
+   ],
+   "runs": 672,
+   "failures": 16,
+   "docs": 69881,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 52.09,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23",
+   "name": "Employee Directory Export",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "7a1d61d4-e2cf-5ac0-b7fd-977043b57db7",
+   "name": "Employee to Benefit Enrollment",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Benefits API Push"
+   ],
+   "runs": 192,
+   "failures": 8,
+   "docs": 5171,
+   "lastRunAt": "2026-11-04T23:32Z",
+   "risk": 10.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "79f78584-0479-5a9c-8155-4b6666b6e981",
+   "name": "Employee to DW Employee Row",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 2,
+   "processesTotal": 2,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Copy of HR Employee Sync",
+    "HR Employee Sync"
+   ],
+   "runs": 384,
+   "failures": 4,
+   "docs": 43351,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 23.81,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "dd9fe2e4-4154-5d3b-93c6-23fef679925e",
+   "name": "Employee to Old Employee",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": "nothing references it",
+   "recentFailures": []
+  },
+  {
+   "id": "8af6b3ca-684e-531a-8d52-77df289921d7",
+   "name": "Employee to Payroll Line",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Payroll Export SFTP"
+   ],
+   "runs": 96,
+   "failures": 4,
+   "docs": 21359,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 9.15,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "9cd4ec5b-66d4-59f2-b016-baa7cebfd13c",
+   "name": "Employee to Payroll Line (old)",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Payroll Export SFTP"
+   ],
+   "runs": 96,
+   "failures": 4,
+   "docs": 21359,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 9.15,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "f7735224-f709-5a4d-90a4-0af1f0a92929",
+   "name": "GET customers",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Customer Master Sync"
+   ],
+   "runs": 192,
+   "failures": 33,
+   "docs": 9902,
+   "lastRunAt": "2026-11-04T23:38Z",
+   "risk": 10.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "dd07c5e6-dca5-5696-aa0e-dc3a3eaa8671",
+   "name": "GET departments",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Department Sync"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "name": "GET employees",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 6,
+   "processesTotal": 6,
+   "deployedProcesses": 4,
+   "usedBy": [
+    "Benefits API Push",
+    "Contractor Onboarding",
+    "Copy of HR Employee Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Payroll Export SFTP"
+   ],
+   "runs": 672,
+   "failures": 16,
+   "docs": 69881,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 78.14,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "3ad6a8f4-4bf4-58f5-a58a-70e21f0ccd1d",
+   "name": "GET legacy employees",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": "nothing references it",
+   "recentFailures": []
+  },
+  {
+   "id": "7aa79c9f-327f-52d5-95c3-2f5d544cc998",
+   "name": "GET payroll ack file",
+   "type": "connector-action",
+   "subType": "sftp",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Payroll Ack Poller"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "d7de5b90-7ec0-5fa9-8a89-223593ff7bb0",
+   "name": "GET plans",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Benefits Plan Refresh"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "fdfbb982-a290-58fa-9e17-f9f3db7e7501",
+   "name": "GET positions",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Position Sync"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "4fbc75e0-a03a-5ff5-b4cf-79fdade14775",
+   "name": "GET timesheet file",
+   "type": "connector-action",
+   "subType": "sftp",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Timesheet Import"
+   ],
+   "runs": 96,
+   "failures": 3,
+   "docs": 47223,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 9.15,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "name": "HR API (REST)",
+   "type": "connector-settings",
+   "subType": "http",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 9,
+   "processesTotal": 9,
+   "deployedProcesses": 6,
+   "usedBy": [
+    "Benefits API Push",
+    "Common - Get OAuth Token",
+    "Contractor Onboarding",
+    "Copy of HR Employee Sync",
+    "Department Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Payroll Export SFTP",
+    "Position Sync"
+   ],
+   "runs": 672,
+   "failures": 16,
+   "docs": 69881,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 117.21,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "name": "HR Employee Sync",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 384,
+   "failures": 4,
+   "docs": 43351,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-04T21:30Z",
+     "fingerprint": "4daaca4a9a395bd9",
+     "error": "Connection reset by peer while reading from hr-api.example.com"
+    },
+    {
+     "at": "2026-11-04T12:33Z",
+     "fingerprint": "4daaca4a9a395bd9",
+     "error": "Connection reset by peer while reading from hr-api.example.com"
+    },
+    {
+     "at": "2026-11-03T22:15Z",
+     "fingerprint": "4daaca4a9a395bd9",
+     "error": "Connection reset by peer while reading from hr-api.example.com"
+    },
+    {
+     "at": "2026-11-01T03:52Z",
+     "fingerprint": "4daaca4a9a395bd9",
+     "error": "Connection reset by peer while reading from hr-api.example.com"
+    }
+   ]
+  },
+  {
+   "id": "71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "name": "INSERT staging rows",
+   "type": "connector-action",
+   "subType": "database",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 5,
+   "processesTotal": 5,
+   "deployedProcesses": 5,
+   "usedBy": [
+    "Benefits Plan Refresh",
+    "Nightly DW Reconciliation",
+    "Payroll Ack Poller",
+    "Timesheet Import",
+    "Vendor Invoice Listener"
+   ],
+   "runs": 703,
+   "failures": 42,
+   "docs": 48351,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 65.57,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "97dbc554-e6de-5789-bcc5-1f54b8672e97",
+   "name": "Listen invoices",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Vendor Invoice Listener"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 12.82,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "097c559d-b932-593d-b442-9cc2fb0ecf2e",
+   "name": "Local Archive Disk",
+   "type": "connector-settings",
+   "subType": "disk-sdk",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 1,
+   "processesTotal": 7,
+   "deployedProcesses": 6,
+   "usedBy": [
+    "Common - Archive to Disk",
+    "Customer Master Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Payroll Export SFTP",
+    "Timesheet Import"
+   ],
+   "runs": 768,
+   "failures": 44,
+   "docs": 121835,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 93.03,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "name": "MERGE dimension",
+   "type": "connector-action",
+   "subType": "database",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 5,
+   "processesTotal": 5,
+   "deployedProcesses": 4,
+   "usedBy": [
+    "Copy of HR Employee Sync",
+    "Department Sync",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Position Sync"
+   ],
+   "runs": 384,
+   "failures": 4,
+   "docs": 43351,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 59.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "2c51c8ad-3753-50cb-8421-695c6dceafa6",
+   "name": "Nightly DW Reconciliation",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Finance",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "0b0b0041-604a-5ff9-b470-8284d8ec8394",
+   "name": "Notification SMTP",
+   "type": "connector-settings",
+   "subType": "mail",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 16,
+   "deployedProcesses": 12,
+   "usedBy": [
+    "Benefits API Push",
+    "Benefits Plan Refresh",
+    "Common - Error Handler",
+    "Contractor Onboarding",
+    "Customer Master Sync",
+    "Department Sync",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Payroll Ack Poller",
+    "Payroll Export SFTP",
+    "Position Sync",
+    "Retry Worker",
+    "Retry Wrapper",
+    "Timesheet Import",
+    "Vendor Invoice Listener",
+    "Vendor Invoice Status Push"
+   ],
+   "runs": 1567,
+   "failures": 91,
+   "docs": 128134,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 235.44,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "d607dfbe-1f78-51e5-b715-dfbfabe20f67",
+   "name": "Old Employee (XML)",
+   "type": "profile.xml",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": "only used by other orphans",
+   "recentFailures": []
+  },
+  {
+   "id": "6b12421e-25bc-59e8-975e-f135f4172ad3",
+   "name": "POST enrollments",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Benefits API Push"
+   ],
+   "runs": 192,
+   "failures": 8,
+   "docs": 5171,
+   "lastRunAt": "2026-11-04T23:32Z",
+   "risk": 10.53,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "12f6d632-921f-5e32-927c-2c4d83299626",
+   "name": "POST invoice status",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 4,
+   "deployedProcesses": 2,
+   "usedBy": [
+    "Retry Worker",
+    "Retry Wrapper",
+    "Vendor Invoice Listener",
+    "Vendor Invoice Status Push"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 51.28,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "ee45c655-6f6b-56df-9006-c1e05aefa2a7",
+   "name": "POST token",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 1,
+   "processesTotal": 6,
+   "deployedProcesses": 4,
+   "usedBy": [
+    "Common - Get OAuth Token",
+    "Copy of HR Employee Sync",
+    "Department Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Position Sync"
+   ],
+   "runs": 384,
+   "failures": 4,
+   "docs": 43351,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 71.44,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "de0a6a1d-081d-5a1b-8364-f4962c0f9f16",
+   "name": "PUT payroll file",
+   "type": "connector-action",
+   "subType": "sftp",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Payroll Export SFTP"
+   ],
+   "runs": 96,
+   "failures": 4,
+   "docs": 21359,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 9.15,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "042936eb-afb6-55e6-bcf8-d3a46562d711",
+   "name": "Payroll Ack Poller",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Payroll",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "name": "Payroll Export SFTP",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Payroll",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 96,
+   "failures": 4,
+   "docs": 21359,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-03T16:06Z",
+     "fingerprint": "125aaecb46c21974",
+     "error": "java.net.SocketTimeoutException: Read timed out after <n> ms (connection 'Payroll SFTP')"
+    },
+    {
+     "at": "2026-11-03T09:06Z",
+     "fingerprint": "125aaecb46c21974",
+     "error": "java.net.SocketTimeoutException: Read timed out after <n> ms (connection 'Payroll SFTP')"
+    },
+    {
+     "at": "2026-11-01T19:08Z",
+     "fingerprint": "125aaecb46c21974",
+     "error": "java.net.SocketTimeoutException: Read timed out after <n> ms (connection 'Payroll SFTP')"
+    },
+    {
+     "at": "2026-11-01T17:00Z",
+     "fingerprint": "125aaecb46c21974",
+     "error": "java.net.SocketTimeoutException: Read timed out after <n> ms (connection 'Payroll SFTP')"
+    }
+   ]
+  },
+  {
+   "id": "214c89fc-3552-544b-a9fb-33ebd7e4d51e",
+   "name": "Payroll Line (Flat File)",
+   "type": "profile.flatfile",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 2,
+   "deployedProcesses": 2,
+   "usedBy": [
+    "Payroll Export SFTP",
+    "Timesheet Import"
+   ],
+   "runs": 192,
+   "failures": 7,
+   "docs": 68582,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 21.05,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "7ec9d662-13d8-50b9-b720-204209d593ba",
+   "name": "Payroll SFTP",
+   "type": "connector-settings",
+   "subType": "sftp",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 3,
+   "processesTotal": 3,
+   "deployedProcesses": 3,
+   "usedBy": [
+    "Payroll Ack Poller",
+    "Payroll Export SFTP",
+    "Timesheet Import"
+   ],
+   "runs": 192,
+   "failures": 7,
+   "docs": 68582,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 31.58,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "6e0cf8fc-cc6a-5671-83d7-b3d9a4e10c21",
+   "name": "Position (JSON)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Position Sync"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "name": "Position Sync",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "HR",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "ff27a843-198f-5bc7-9f46-f9dd0bdef247",
+   "name": "Position to DW Employee Row",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Position Sync"
+   ],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "0591524b-ed8c-52c3-8bc5-cb72549fea09",
+   "name": "Retry Worker",
+   "type": "process",
+   "subType": null,
+   "kind": "subprocess",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 3,
+   "deployedProcesses": 2,
+   "usedBy": [
+    "Retry Wrapper",
+    "Vendor Invoice Listener",
+    "Vendor Invoice Status Push"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 38.46,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": true,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "name": "Retry Wrapper",
+   "type": "process",
+   "subType": null,
+   "kind": "subprocess",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 3,
+   "processesTotal": 3,
+   "deployedProcesses": 2,
+   "usedBy": [
+    "Retry Worker",
+    "Vendor Invoice Listener",
+    "Vendor Invoice Status Push"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 38.46,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": true,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "bf152dbe-f66c-5dee-9902-1ff5a9e4330a",
+   "name": "Scratch Profile (copy)",
+   "type": "profile.json",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": null,
+   "environments": [],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": "nothing references it",
+   "recentFailures": []
+  },
+  {
+   "id": "c42bd4bf-2f67-5761-9f75-5934a51264f7",
+   "name": "Send alert email",
+   "type": "connector-action",
+   "subType": "mail",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 16,
+   "deployedProcesses": 12,
+   "usedBy": [
+    "Benefits API Push",
+    "Benefits Plan Refresh",
+    "Common - Error Handler",
+    "Contractor Onboarding",
+    "Customer Master Sync",
+    "Department Sync",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Payroll Ack Poller",
+    "Payroll Export SFTP",
+    "Position Sync",
+    "Retry Worker",
+    "Retry Wrapper",
+    "Timesheet Import",
+    "Vendor Invoice Listener",
+    "Vendor Invoice Status Push"
+   ],
+   "runs": 1567,
+   "failures": 91,
+   "docs": 128134,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 235.44,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "name": "Timesheet Import",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Payroll",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 96,
+   "failures": 3,
+   "docs": 47223,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-03T13:05Z",
+     "fingerprint": "ce8583e270354e58",
+     "error": "Map shape failed at row <n>: Unparseable date: <str> for field PunchDate (expected yyyy-MM-dd)"
+    },
+    {
+     "at": "2026-11-02T14:01Z",
+     "fingerprint": "ce8583e270354e58",
+     "error": "Map shape failed at row <n>: Unparseable date: <str> for field PunchDate (expected yyyy-MM-dd)"
+    },
+    {
+     "at": "2026-11-01T03:03Z",
+     "fingerprint": "ce8583e270354e58",
+     "error": "Map shape failed at row <n>: Unparseable date: <str> for field PunchDate (expected yyyy-MM-dd)"
+    }
+   ]
+  },
+  {
+   "id": "e7298ae1-d0e7-5314-b842-f453adf2db61",
+   "name": "Timesheet Row (Flat File)",
+   "type": "profile.flatfile",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Timesheet Import"
+   ],
+   "runs": 96,
+   "failures": 3,
+   "docs": 47223,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 9.15,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "8763b476-a0b1-5990-bc1e-9f8fcb7a02e8",
+   "name": "Timesheet Row to Payroll Line",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Timesheet Import"
+   ],
+   "runs": 96,
+   "failures": 3,
+   "docs": 47223,
+   "lastRunAt": "2026-11-04T23:03Z",
+   "risk": 9.15,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "dee56b55-f55b-5e32-8803-2a121b39286a",
+   "name": "UPSERT contacts",
+   "type": "connector-action",
+   "subType": "http",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 2,
+   "processesTotal": 2,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Contractor Onboarding",
+    "Customer Master Sync"
+   ],
+   "runs": 192,
+   "failures": 33,
+   "docs": 9902,
+   "lastRunAt": "2026-11-04T23:38Z",
+   "risk": 21.05,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "a5eddec3-3dc5-5c64-aa26-500707bb764f",
+   "name": "Vendor API (REST)",
+   "type": "connector-settings",
+   "subType": "http",
+   "kind": "connection",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 2,
+   "processesTotal": 4,
+   "deployedProcesses": 2,
+   "usedBy": [
+    "Retry Worker",
+    "Retry Wrapper",
+    "Vendor Invoice Listener",
+    "Vendor Invoice Status Push"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 51.28,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "e6a3ea1d-5eb4-5922-b97c-1007021a05cd",
+   "name": "Vendor Invoice (XML)",
+   "type": "profile.xml",
+   "subType": null,
+   "kind": "profile",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-9b4c0045",
+   "processesDirect": 0,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Vendor Invoice Listener"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 12.82,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "name": "Vendor Invoice Listener",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Finance",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": [
+    {
+     "at": "2026-11-04T01:57Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:54Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:49Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:43Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:39Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:38Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:34Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:28Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:23Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:22Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:19Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:05Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-04T01:01Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:57Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:54Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:52Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:47Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:45Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:38Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:36Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:17Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:13Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:12Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-03T01:06Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-02T09:37Z",
+     "fingerprint": "bd895cf17ce81cd5",
+     "error": "Process was cancelled: runtime restarted during execution"
+    },
+    {
+     "at": "2026-11-02T01:17Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:57Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:56Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:54Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:49Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:37Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:34Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:29Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:24Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:19Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:13Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:11Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:07Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    },
+    {
+     "at": "2026-11-01T01:01Z",
+     "fingerprint": "b72f40604c06aac1",
+     "error": "Connection refused (Connection refused) to host vendor-api.example.com:443"
+    }
+   ]
+  },
+  {
+   "id": "2ded51e2-9b8f-52c6-a548-f0bb790a3056",
+   "name": "Vendor Invoice Status Push",
+   "type": "process",
+   "subType": null,
+   "kind": "process",
+   "folder": "Finance",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 0,
+   "processesTotal": 0,
+   "deployedProcesses": 0,
+   "usedBy": [],
+   "runs": 0,
+   "failures": 0,
+   "docs": 0,
+   "lastRunAt": null,
+   "risk": 0.0,
+   "deployedVersion": 1,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": true,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "d7d903d6-9906-56d8-8b28-3d8df9a8adb5",
+   "name": "Vendor Invoice to DW Invoice Row",
+   "type": "transform.map",
+   "subType": null,
+   "kind": "map",
+   "folder": "#Common",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-4f1a93eb",
+   "processesDirect": 1,
+   "processesTotal": 1,
+   "deployedProcesses": 1,
+   "usedBy": [
+    "Vendor Invoice Listener"
+   ],
+   "runs": 607,
+   "failures": 39,
+   "docs": 1128,
+   "lastRunAt": "2026-11-04T23:58Z",
+   "risk": 12.82,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "34e9a790-5098-560a-997a-bf2787f38947",
+   "name": "Write archive file",
+   "type": "connector-action",
+   "subType": "disk-sdk",
+   "kind": "operation",
+   "folder": "#Shared Connections",
+   "version": 1,
+   "modifiedAt": "2026-10-31T09:00Z",
+   "modifiedBy": "user-ea34681a",
+   "processesDirect": 1,
+   "processesTotal": 7,
+   "deployedProcesses": 6,
+   "usedBy": [
+    "Common - Archive to Disk",
+    "Customer Master Sync",
+    "Employee Directory Export",
+    "HR Employee Sync",
+    "Nightly DW Reconciliation",
+    "Payroll Export SFTP",
+    "Timesheet Import"
+   ],
+   "runs": 768,
+   "failures": 44,
+   "docs": 121835,
+   "lastRunAt": "2026-11-04T23:51Z",
+   "risk": 93.03,
+   "deployedVersion": null,
+   "environments": [
+    "Production"
+   ],
+   "isTopLevel": false,
+   "inCycle": false,
+   "orphan": null,
+   "recentFailures": []
+  },
+  {
+   "id": "9297d480-6086-5581-9fd3-7bb228828bac",
+   "name": "deleted component",
+   "type": "deleted",
+   "kind": "deleted",
+   "usedBy": [],
+   "environments": [],
+   "runs": 0,
+   "failures": 0,
+   "processesTotal": 0
+  }
+ ],
+ "edges": [
+  {
+   "id": "0448bd0f-8985-5c73-b033-a507a66ec169>ee45c655-6f6b-56df-9006-c1e05aefa2a7",
+   "source": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "target": "ee45c655-6f6b-56df-9006-c1e05aefa2a7",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Request token"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "0591524b-ed8c-52c3-8bc5-cb72549fea09>12f6d632-921f-5e32-927c-2c4d83299626",
+   "source": "0591524b-ed8c-52c3-8bc5-cb72549fea09",
+   "target": "12f6d632-921f-5e32-927c-2c4d83299626",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Send status"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "0591524b-ed8c-52c3-8bc5-cb72549fea09>b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "source": "0591524b-ed8c-52c3-8bc5-cb72549fea09",
+   "target": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Retry on failure"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9>2d22d368-3b4f-5c77-8dbb-cc381285e456",
+   "source": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "target": "2d22d368-3b4f-5c77-8dbb-cc381285e456",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Push enrollments"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9>9297d480-6086-5581-9fd3-7bb228828bac",
+   "source": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "target": "9297d480-6086-5581-9fd3-7bb228828bac",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Plan lookup"
+   ],
+   "dangling": true
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32>dd07c5e6-dca5-5696-aa0e-dc3a3eaa8671",
+   "source": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "target": "dd07c5e6-dca5-5696-aa0e-dc3a3eaa8671",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get departments"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2c51c8ad-3753-50cb-8421-695c6dceafa6>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "2c51c8ad-3753-50cb-8421-695c6dceafa6",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Fix differences",
+    "Load counts"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2c51c8ad-3753-50cb-8421-695c6dceafa6>bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "source": "2c51c8ad-3753-50cb-8421-695c6dceafa6",
+   "target": "bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Fix differences"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "358848f7-b76d-5fc3-b130-338c4d5b9a63>bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "source": "358848f7-b76d-5fc3-b130-338c4d5b9a63",
+   "target": "bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge into dim_employee"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "358848f7-b76d-5fc3-b130-338c4d5b9a63>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "358848f7-b76d-5fc3-b130-338c4d5b9a63",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23>0448bd0f-8985-5c73-b033-a507a66ec169",
+   "source": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23",
+   "target": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get token"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23>164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "source": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23",
+   "target": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive payload"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d>4fbc75e0-a03a-5ff5-b4cf-79fdade14775",
+   "source": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "target": "4fbc75e0-a03a-5ff5-b4cf-79fdade14775",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Pick up timesheet file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d>7ec9d662-13d8-50b9-b720-204209d593ba",
+   "source": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "target": "7ec9d662-13d8-50b9-b720-204209d593ba",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Pick up timesheet file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "79f78584-0479-5a9c-8155-4b6666b6e981>52b1916e-ab60-5ac5-a989-fa9d1eb33fab",
+   "source": "79f78584-0479-5a9c-8155-4b6666b6e981",
+   "target": "52b1916e-ab60-5ac5-a989-fa9d1eb33fab",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "7a1d61d4-e2cf-5ac0-b7fd-977043b57db7>51a06127-346d-59bb-9079-4d45eba058bd",
+   "source": "7a1d61d4-e2cf-5ac0-b7fd-977043b57db7",
+   "target": "51a06127-346d-59bb-9079-4d45eba058bd",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "8763b476-a0b1-5990-bc1e-9f8fcb7a02e8>214c89fc-3552-544b-a9fb-33ebd7e4d51e",
+   "source": "8763b476-a0b1-5990-bc1e-9f8fcb7a02e8",
+   "target": "214c89fc-3552-544b-a9fb-33ebd7e4d51e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "8763b476-a0b1-5990-bc1e-9f8fcb7a02e8>e7298ae1-d0e7-5314-b842-f453adf2db61",
+   "source": "8763b476-a0b1-5990-bc1e-9f8fcb7a02e8",
+   "target": "e7298ae1-d0e7-5314-b842-f453adf2db61",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "8af6b3ca-684e-531a-8d52-77df289921d7>214c89fc-3552-544b-a9fb-33ebd7e4d51e",
+   "source": "8af6b3ca-684e-531a-8d52-77df289921d7",
+   "target": "214c89fc-3552-544b-a9fb-33ebd7e4d51e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "9c92e5d3-0e45-52b2-9882-8105b7f738ee>6145af61-2bee-5d59-b997-b6679ab6cb3a",
+   "source": "9c92e5d3-0e45-52b2-9882-8105b7f738ee",
+   "target": "6145af61-2bee-5d59-b997-b6679ab6cb3a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "9cd4ec5b-66d4-59f2-b016-baa7cebfd13c>214c89fc-3552-544b-a9fb-33ebd7e4d51e",
+   "source": "9cd4ec5b-66d4-59f2-b016-baa7cebfd13c",
+   "target": "214c89fc-3552-544b-a9fb-33ebd7e4d51e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee>0b0b0041-604a-5ff9-b470-8284d8ec8394",
+   "source": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "target": "0b0b0041-604a-5ff9-b470-8284d8ec8394",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Email the on-call"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a>0591524b-ed8c-52c3-8bc5-cb72549fea09",
+   "source": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "target": "0591524b-ed8c-52c3-8bc5-cb72549fea09",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Try once"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "bf6b552e-5506-572f-b9f5-cfff20bcf55a>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "bf6b552e-5506-572f-b9f5-cfff20bcf55a",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>0448bd0f-8985-5c73-b033-a507a66ec169",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get token"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb>97dbc554-e6de-5789-bcc5-1f54b8672e97",
+   "source": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "target": "97dbc554-e6de-5789-bcc5-1f54b8672e97",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Receive invoice"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb>b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "source": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "target": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Acknowledge with retry"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb>d7d903d6-9906-56d8-8b28-3d8df9a8adb5",
+   "source": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "target": "d7d903d6-9906-56d8-8b28-3d8df9a8adb5",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to DW row"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "da53992e-9dc1-5e74-8ed1-221f9578bbd4>dee56b55-f55b-5e32-8803-2a121b39286a",
+   "source": "da53992e-9dc1-5e74-8ed1-221f9578bbd4",
+   "target": "dee56b55-f55b-5e32-8803-2a121b39286a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Upsert contacts"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "da53992e-9dc1-5e74-8ed1-221f9578bbd4>f7735224-f709-5a4d-90a4-0af1f0a92929",
+   "source": "da53992e-9dc1-5e74-8ed1-221f9578bbd4",
+   "target": "f7735224-f709-5a4d-90a4-0af1f0a92929",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get customers"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>7ec9d662-13d8-50b9-b720-204209d593ba",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "7ec9d662-13d8-50b9-b720-204209d593ba",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Upload payroll file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>de0a6a1d-081d-5a1b-8364-f4962c0f9f16",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "de0a6a1d-081d-5a1b-8364-f4962c0f9f16",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Upload payroll file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get positions"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "ff27a843-198f-5bc7-9f46-f9dd0bdef247>6e0cf8fc-cc6a-5671-83d7-b3d9a4e10c21",
+   "source": "ff27a843-198f-5bc7-9f46-f9dd0bdef247",
+   "target": "6e0cf8fc-cc6a-5671-83d7-b3d9a4e10c21",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "042936eb-afb6-55e6-bcf8-d3a46562d711>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "042936eb-afb6-55e6-bcf8-d3a46562d711",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "164205c1-e39a-53d7-bcb2-819f5fc60077>097c559d-b932-593d-b442-9cc2fb0ecf2e",
+   "source": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "target": "097c559d-b932-593d-b442-9cc2fb0ecf2e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write archive"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32>5a531e4f-4c16-59ad-a61a-557065f82ff1",
+   "source": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "target": "5a531e4f-4c16-59ad-a61a-557065f82ff1",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2c51c8ad-3753-50cb-8421-695c6dceafa6>164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "source": "2c51c8ad-3753-50cb-8421-695c6dceafa6",
+   "target": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive payload"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2c51c8ad-3753-50cb-8421-695c6dceafa6>71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "source": "2c51c8ad-3753-50cb-8421-695c6dceafa6",
+   "target": "71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load counts"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "358848f7-b76d-5fc3-b130-338c4d5b9a63>0448bd0f-8985-5c73-b033-a507a66ec169",
+   "source": "358848f7-b76d-5fc3-b130-338c4d5b9a63",
+   "target": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get token"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "358848f7-b76d-5fc3-b130-338c4d5b9a63>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "358848f7-b76d-5fc3-b130-338c4d5b9a63",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge into dim_employee"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "358848f7-b76d-5fc3-b130-338c4d5b9a63>79f78584-0479-5a9c-8155-4b6666b6e981",
+   "source": "358848f7-b76d-5fc3-b130-338c4d5b9a63",
+   "target": "79f78584-0479-5a9c-8155-4b6666b6e981",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to DW row"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d>164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "source": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "target": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive payload"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "7a1d61d4-e2cf-5ac0-b7fd-977043b57db7>de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "source": "7a1d61d4-e2cf-5ac0-b7fd-977043b57db7",
+   "target": "de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "bf6b552e-5506-572f-b9f5-cfff20bcf55a>2d22d368-3b4f-5c77-8dbb-cc381285e456",
+   "source": "bf6b552e-5506-572f-b9f5-cfff20bcf55a",
+   "target": "2d22d368-3b4f-5c77-8dbb-cc381285e456",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get plans"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "bf6b552e-5506-572f-b9f5-cfff20bcf55a>71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "source": "bf6b552e-5506-572f-b9f5-cfff20bcf55a",
+   "target": "71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "bf6b552e-5506-572f-b9f5-cfff20bcf55a>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "bf6b552e-5506-572f-b9f5-cfff20bcf55a",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge into dim_employee"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d04b5b54-9d06-5370-b6e8-5eea05848eee>6145af61-2bee-5d59-b997-b6679ab6cb3a",
+   "source": "d04b5b54-9d06-5370-b6e8-5eea05848eee",
+   "target": "6145af61-2bee-5d59-b997-b6679ab6cb3a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb>a5eddec3-3dc5-5c64-aa26-500707bb764f",
+   "source": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "target": "a5eddec3-3dc5-5c64-aa26-500707bb764f",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Receive invoice"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d7d903d6-9906-56d8-8b28-3d8df9a8adb5>c86597da-81ae-5ced-9119-723c3c5cac63",
+   "source": "d7d903d6-9906-56d8-8b28-3d8df9a8adb5",
+   "target": "c86597da-81ae-5ced-9119-723c3c5cac63",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>8af6b3ca-684e-531a-8d52-77df289921d7",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "8af6b3ca-684e-531a-8d52-77df289921d7",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to payroll line"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "dd9fe2e4-4154-5d3b-93c6-23fef679925e>d607dfbe-1f78-51e5-b715-dfbfabe20f67",
+   "source": "dd9fe2e4-4154-5d3b-93c6-23fef679925e",
+   "target": "d607dfbe-1f78-51e5-b715-dfbfabe20f67",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "dd9fe2e4-4154-5d3b-93c6-23fef679925e>de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "source": "dd9fe2e4-4154-5d3b-93c6-23fef679925e",
+   "target": "de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88>0448bd0f-8985-5c73-b033-a507a66ec169",
+   "source": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "target": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get token"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88>bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "source": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "target": "bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88>fdfbb982-a290-58fa-9e17-f9f3db7e7501",
+   "source": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "target": "fdfbb982-a290-58fa-9e17-f9f3db7e7501",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get positions"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "042936eb-afb6-55e6-bcf8-d3a46562d711>7aa79c9f-327f-52d5-95c3-2f5d544cc998",
+   "source": "042936eb-afb6-55e6-bcf8-d3a46562d711",
+   "target": "7aa79c9f-327f-52d5-95c3-2f5d544cc998",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Pick up ack file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "0591524b-ed8c-52c3-8bc5-cb72549fea09>a5eddec3-3dc5-5c64-aa26-500707bb764f",
+   "source": "0591524b-ed8c-52c3-8bc5-cb72549fea09",
+   "target": "a5eddec3-3dc5-5c64-aa26-500707bb764f",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Send status"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9>6b12421e-25bc-59e8-975e-f135f4172ad3",
+   "source": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "target": "6b12421e-25bc-59e8-975e-f135f4172ad3",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Push enrollments"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9>7a1d61d4-e2cf-5ac0-b7fd-977043b57db7",
+   "source": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "target": "7a1d61d4-e2cf-5ac0-b7fd-977043b57db7",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to enrollment"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9>8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "source": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "target": "8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32>0448bd0f-8985-5c73-b033-a507a66ec169",
+   "source": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "target": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get token"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get departments"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2ded51e2-9b8f-52c6-a548-f0bb790a3056>b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "source": "2ded51e2-9b8f-52c6-a548-f0bb790a3056",
+   "target": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Send status with retry"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23>8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "source": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23",
+   "target": "8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "3d855c31-74ba-5e87-9ee2-a2ba3e4ada23",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d>71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "source": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "target": "71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "79f78584-0479-5a9c-8155-4b6666b6e981>de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "source": "79f78584-0479-5a9c-8155-4b6666b6e981",
+   "target": "de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "8af6b3ca-684e-531a-8d52-77df289921d7>de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "source": "8af6b3ca-684e-531a-8d52-77df289921d7",
+   "target": "de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "9cd4ec5b-66d4-59f2-b016-baa7cebfd13c>de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "source": "9cd4ec5b-66d4-59f2-b016-baa7cebfd13c",
+   "target": "de707670-5905-5ae4-a48b-e0ee4faf436a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "b6f6ccfb-9ab2-5d6e-a6cd-8eed337ac30a",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "bf6b552e-5506-572f-b9f5-cfff20bcf55a>d7de5b90-7ec0-5fa9-8a89-223593ff7bb0",
+   "source": "bf6b552e-5506-572f-b9f5-cfff20bcf55a",
+   "target": "d7de5b90-7ec0-5fa9-8a89-223593ff7bb0",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get plans"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>79f78584-0479-5a9c-8155-4b6666b6e981",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "79f78584-0479-5a9c-8155-4b6666b6e981",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to DW row"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge into dim_employee"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4>53a2f3bb-64ef-5ff0-b9e4-e7865b9d0192",
+   "source": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4",
+   "target": "53a2f3bb-64ef-5ff0-b9e4-e7865b9d0192",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Create CRM contact"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4>dee56b55-f55b-5e32-8803-2a121b39286a",
+   "source": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4",
+   "target": "dee56b55-f55b-5e32-8803-2a121b39286a",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Create CRM contact"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "da53992e-9dc1-5e74-8ed1-221f9578bbd4>53a2f3bb-64ef-5ff0-b9e4-e7865b9d0192",
+   "source": "da53992e-9dc1-5e74-8ed1-221f9578bbd4",
+   "target": "53a2f3bb-64ef-5ff0-b9e4-e7865b9d0192",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get customers",
+    "Upsert contacts"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "da53992e-9dc1-5e74-8ed1-221f9578bbd4>9c92e5d3-0e45-52b2-9882-8105b7f738ee",
+   "source": "da53992e-9dc1-5e74-8ed1-221f9578bbd4",
+   "target": "9c92e5d3-0e45-52b2-9882-8105b7f738ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to contact"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>9cd4ec5b-66d4-59f2-b016-baa7cebfd13c",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "9cd4ec5b-66d4-59f2-b016-baa7cebfd13c",
+   "inApi": true,
+   "inXml": false,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "042936eb-afb6-55e6-bcf8-d3a46562d711>71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "source": "042936eb-afb6-55e6-bcf8-d3a46562d711",
+   "target": "71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "042936eb-afb6-55e6-bcf8-d3a46562d711>7ec9d662-13d8-50b9-b720-204209d593ba",
+   "source": "042936eb-afb6-55e6-bcf8-d3a46562d711",
+   "target": "7ec9d662-13d8-50b9-b720-204209d593ba",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Pick up ack file"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "042936eb-afb6-55e6-bcf8-d3a46562d711>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "042936eb-afb6-55e6-bcf8-d3a46562d711",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "0448bd0f-8985-5c73-b033-a507a66ec169>f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "source": "0448bd0f-8985-5c73-b033-a507a66ec169",
+   "target": "f47bd8a9-30ca-52c6-997f-5d7871df9a3c",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Request token"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "06ddf71e-492e-5e9a-92e3-72525c72a7b9>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "06ddf71e-492e-5e9a-92e3-72525c72a7b9",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "164205c1-e39a-53d7-bcb2-819f5fc60077>34e9a790-5098-560a-997a-bf2787f38947",
+   "source": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "target": "34e9a790-5098-560a-997a-bf2787f38947",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Write archive"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32>402997cf-9e71-509b-afb7-655010cad444",
+   "source": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "target": "402997cf-9e71-509b-afb7-655010cad444",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "1fd04a48-ac51-5ca9-a148-a93996e79f32>bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "source": "1fd04a48-ac51-5ca9-a148-a93996e79f32",
+   "target": "bd1dade7-c63d-531e-b370-7ab26aec2186",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Merge"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2c51c8ad-3753-50cb-8421-695c6dceafa6>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "2c51c8ad-3753-50cb-8421-695c6dceafa6",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "2ded51e2-9b8f-52c6-a548-f0bb790a3056>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "2ded51e2-9b8f-52c6-a548-f0bb790a3056",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "358848f7-b76d-5fc3-b130-338c4d5b9a63>8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "source": "358848f7-b76d-5fc3-b130-338c4d5b9a63",
+   "target": "8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "5a531e4f-4c16-59ad-a61a-557065f82ff1>52b1916e-ab60-5ac5-a989-fa9d1eb33fab",
+   "source": "5a531e4f-4c16-59ad-a61a-557065f82ff1",
+   "target": "52b1916e-ab60-5ac5-a989-fa9d1eb33fab",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "5a531e4f-4c16-59ad-a61a-557065f82ff1>951f70b7-7d2a-5e7d-8222-59f9f57ea0a7",
+   "source": "5a531e4f-4c16-59ad-a61a-557065f82ff1",
+   "target": "951f70b7-7d2a-5e7d-8222-59f9f57ea0a7",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "74379df5-f2a0-5c2a-ae43-17e294d7787d>8763b476-a0b1-5990-bc1e-9f8fcb7a02e8",
+   "source": "74379df5-f2a0-5c2a-ae43-17e294d7787d",
+   "target": "8763b476-a0b1-5990-bc1e-9f8fcb7a02e8",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map to payroll line"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "9c92e5d3-0e45-52b2-9882-8105b7f738ee>e4db6ebe-3b2d-595e-9192-033f3048eabc",
+   "source": "9c92e5d3-0e45-52b2-9882-8105b7f738ee",
+   "target": "e4db6ebe-3b2d-595e-9192-033f3048eabc",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee>c42bd4bf-2f67-5761-9f75-5934a51264f7",
+   "source": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "target": "c42bd4bf-2f67-5761-9f75-5934a51264f7",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Email the on-call"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive payload"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "cd210e62-0272-59bb-be08-d8898e4b0013>8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "source": "cd210e62-0272-59bb-be08-d8898e4b0013",
+   "target": "8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4>8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "source": "ce0dc0a5-ea4c-52ec-ae4e-3c0f73df9fc4",
+   "target": "8a2ddcb8-35aa-5884-a174-3d5b54b5609e",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Get employees"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d04b5b54-9d06-5370-b6e8-5eea05848eee>e4db6ebe-3b2d-595e-9192-033f3048eabc",
+   "source": "d04b5b54-9d06-5370-b6e8-5eea05848eee",
+   "target": "e4db6ebe-3b2d-595e-9192-033f3048eabc",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "d7884027-b79c-5295-8e3c-aa86e97a7cdb>71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "source": "d7884027-b79c-5295-8e3c-aa86e97a7cdb",
+   "target": "71ea4f3a-2850-537b-b779-83a96a8c2663",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Load staging"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "d7d903d6-9906-56d8-8b28-3d8df9a8adb5>e6a3ea1d-5eb4-5922-b97c-1007021a05cd",
+   "source": "d7d903d6-9906-56d8-8b28-3d8df9a8adb5",
+   "target": "e6a3ea1d-5eb4-5922-b97c-1007021a05cd",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  },
+  {
+   "id": "da53992e-9dc1-5e74-8ed1-221f9578bbd4>164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "source": "da53992e-9dc1-5e74-8ed1-221f9578bbd4",
+   "target": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive payload"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "da53992e-9dc1-5e74-8ed1-221f9578bbd4>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "da53992e-9dc1-5e74-8ed1-221f9578bbd4",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "164205c1-e39a-53d7-bcb2-819f5fc60077",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Archive payload"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "db94020a-c9ca-5218-b85d-c03977c3e750>ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "source": "db94020a-c9ca-5218-b85d-c03977c3e750",
+   "target": "ab6cd82a-d941-50ae-8df8-25aa3866b8ee",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Handle errors"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "f59513b4-06fe-5c14-bb3b-136be99f6d88>ff27a843-198f-5bc7-9f46-f9dd0bdef247",
+   "source": "f59513b4-06fe-5c14-bb3b-136be99f6d88",
+   "target": "ff27a843-198f-5bc7-9f46-f9dd0bdef247",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [
+    "Map"
+   ],
+   "dangling": false
+  },
+  {
+   "id": "ff27a843-198f-5bc7-9f46-f9dd0bdef247>52b1916e-ab60-5ac5-a989-fa9d1eb33fab",
+   "source": "ff27a843-198f-5bc7-9f46-f9dd0bdef247",
+   "target": "52b1916e-ab60-5ac5-a989-fa9d1eb33fab",
+   "inApi": true,
+   "inXml": true,
+   "shapes": [],
+   "dangling": false
+  }
+ ]
+}

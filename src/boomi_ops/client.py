@@ -112,6 +112,8 @@ def http_transport(base_url: str, account_id: str, username: str, token: str, ti
         url = path if path.startswith("http") else root + path  # log downloads come back as full URLs
         data = None
         headers = {}
+        if method == "GET" and path.startswith("/Component/"):
+            headers["Accept"] = "application/xml"  # component bodies are XML; returned as bytes below
         if body is not None:
             data = body if content_type == "text/plain" else json.dumps(body)
             headers["Content-Type"] = content_type

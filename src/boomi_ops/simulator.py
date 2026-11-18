@@ -95,42 +95,42 @@ class World:
         self.by_id = {e.record["executionId"]: e for e in self.executions}
 
     # ---- deployments -------------------------------------------------------------------------
+    def _deployment(self, pid: str, name: str, when: datetime, version: int, notes: str) -> Deployment:
+        rng = _rng(self.seed, "deploy", name, version)
+        return Deployment(
+            {
+                "@type": "DeployedPackage",
+                "deploymentId": str(uuid.UUID(int=rng.getrandbits(128), version=4)),
+                "componentId": pid,
+                "componentName": name,
+                "componentType": "process",
+                "componentVersion": version,
+                "packageVersion": f"1.{version - 1}",
+                "version": version,
+                "deployedDate": to_boomi(when),
+                "deployedBy": "dev.user@example.com",
+                "environmentId": "env-sim-prod",
+                "environmentName": "Production",
+                "active": True,
+                "notes": notes,
+            },
+            when,
+        )
+
     def _make_deployments(self) -> list[Deployment]:
-        out = []
-
-        def deploy(proc: Process, when: datetime, version: int, notes: str) -> None:
-            rng = _rng(self.seed, "deploy", proc.name, version)
-            out.append(
-                Deployment(
-                    {
-                        "@type": "DeployedPackage",
-                        "deploymentId": str(uuid.UUID(int=rng.getrandbits(128), version=4)),
-                        "componentId": proc.id,
-                        "componentName": proc.name,
-                        "componentType": "process",
-                        "componentVersion": version,
-                        "packageVersion": f"1.{version - 1}",
-                        "version": version,
-                        "deployedDate": to_boomi(when),
-                        "deployedBy": "dev.user@example.com",
-                        "environmentId": "env-sim-prod",
-                        "environmentName": "Production",
-                        "active": True,
-                        "notes": notes,
-                    },
-                    when,
-                )
-            )
-
         day0 = self.start - timedelta(days=1)
-        for p in PROCESSES:
-            deploy(p, day0 + timedelta(hours=9), 1, "initial release")
+        out = [self._deployment(p.id, p.name, day0 + timedelta(hours=9), 1, "initial release") for p in PROCESSES]
         cms = BY_NAME["Customer Master Sync"]
         if self.days >= 3:
-            deploy(cms, self._bad_deploy_at, 2, "phone number formatting")
+            out.append(self._deployment(cms.id, cms.name, self._bad_deploy_at, 2, "phone number formatting"))
         if self.days >= 4:
-            deploy(cms, self._rollback_at, 3, "rollback to 1.0 logic")
+            out.append(self._deployment(cms.id, cms.name, self._rollback_at, 3, "rollback to 1.0 logic"))
         return out
+
+    def add_deployment(self, pid: str, name: str, version: int = 1, notes: str = "initial release") -> None:
+        """For processes the account has but this simulator doesn't run (lineage.sim_account)."""
+        when = self.start - timedelta(days=1) + timedelta(hours=9)
+        self.deployments.append(self._deployment(pid, name, when, version, notes))
 
     @property
     def _bad_deploy_at(self) -> datetime:
@@ -303,11 +303,13 @@ def _matches(record: dict, expr: dict | None) -> bool:
 
 
 class ReplayTransport:
-    """Answers query / queryMore / ProcessLog like the Platform API, against a World at a moving clock."""
+    """Answers query / queryMore / ProcessLog (and, with an account, the component endpoints) like the
+    Platform API, against a World at a moving clock."""
 
     def __init__(self, world: World, clock: Callable[[], datetime], page_size: int = 100,
-                 busy_every: int = 0):
+                 busy_every: int = 0, account: Any = None):
         self.world = world
+        self.account = account  # optional lineage.sim_account.SyntheticAccount for component endpoints
         self.clock = clock
         self.page_size = page_size
         self.busy_every = busy_every  # return a 503 on every Nth call, to exercise retries
@@ -320,6 +322,10 @@ class ReplayTransport:
             return 503, {"message": "The Boomi server is currently unavailable or your account's rate "
                                     "limits have been exceeded. Retry later."}
         now = self.clock()
+        if self.account is not None:
+            handled = self.account.handle(method, path, body, now, self._page)
+            if handled is not None:
+                return handled
         if method == "POST" and path.endswith("/queryMore"):
             if content_type != "text/plain" or not isinstance(body, str):
                 return 400, {"message": "queryMore expects the token as a text/plain body"}

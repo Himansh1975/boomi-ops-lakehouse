@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blast Radius</title>
+<meta name="description" content="Boomi component lineage: what breaks if you change it, weighted by real runs.">
+<style>
+  :root {
+    --bg: #f7f7f5; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #e3e2dd;
+    --accent: #c2410c; --accent-soft: #fde7da;
+    --k-process: #2563eb; --k-subprocess: #0d9488; --k-connection: #d97706; --k-operation: #a16207;
+    --k-profile: #7c3aed; --k-map: #16a34a; --k-other: #64748b; --k-deleted: #9ca3af;
+    --fail: #dc2626; --edge: #b9b8b1; --faded: 0.12;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413; --panel: #1e1e1c; --ink: #ecebe6; --muted: #a3a29b; --line: #33322f;
+      --accent: #fb923c; --accent-soft: #3b2415;
+      --k-process: #60a5fa; --k-subprocess: #2dd4bf; --k-connection: #fbbf24; --k-operation: #d6a84a;
+      --k-profile: #a78bfa; --k-map: #4ade80; --k-other: #94a3b8; --k-deleted: #6b7280;
+      --fail: #f87171; --edge: #4b4a45; --faded: 0.15;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413; --panel: #1e1e1c; --ink: #ecebe6; --muted: #a3a29b; --line: #33322f;
+    --accent: #fb923c; --accent-soft: #3b2415;
+    --k-process: #60a5fa; --k-subprocess: #2dd4bf; --k-connection: #fbbf24; --k-operation: #d6a84a;
+    --k-profile: #a78bfa; --k-map: #4ade80; --k-other: #94a3b8; --k-deleted: #6b7280;
+    --fail: #f87171; --edge: #4b4a45; --faded: 0.15;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--ink); font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+         display: grid; grid-template-rows: auto 1fr; }
+  header { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; padding: 12px 16px;
+           border-bottom: 1px solid var(--line); background: var(--panel); }
+  h1 { font-size: 17px; margin: 0; letter-spacing: -0.01em; }
+  h1 span { color: var(--accent); }
+  .stats { color: var(--muted); font-size: 13px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-left: auto; }
+  input[type=search] { width: 240px; max-width: 100%; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px;
+                       background: var(--bg); color: var(--ink); font: inherit; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg button { border: 0; background: transparent; color: var(--muted); padding: 7px 10px; font: inherit; cursor: pointer; }
+  .seg button[aria-pressed=true] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  label.toggle { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); font-size: 13px; cursor: pointer; }
+  main { display: grid; grid-template-columns: 1fr 360px; min-height: 0; }
+  #cy { min-height: 0; }
+  aside { border-left: 1px solid var(--line); background: var(--panel); padding: 16px; overflow: auto; }
+  aside h2 { font-size: 16px; margin: 0 0 2px; }
+  .kind { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .big { font-size: 15px; margin: 12px 0; padding: 10px 12px; background: var(--accent-soft); border-radius: 8px; }
+  .big b { color: var(--accent); }
+  .meta { color: var(--muted); font-size: 13px; margin: 6px 0; }
+  .warn { color: var(--fail); font-size: 13px; margin: 6px 0; }
+  ul { padding-left: 18px; margin: 6px 0 12px; }
+  li { margin: 3px 0; }
+  li small { color: var(--muted); }
+  h3 { font-size: 13px; margin: 14px 0 4px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 12px; color: var(--muted); margin-top: 16px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .hint { color: var(--muted); }
+  a { color: var(--accent); }
+  @media (max-width: 820px) {
+    main { grid-template-columns: 1fr; grid-template-rows: 60vh auto; }
+    aside { border-left: 0; border-top: 1px solid var(--line); }
+    .controls { margin-left: 0; width: 100%; }
+    input[type=search] { flex: 1; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Blast <span>Radius</span></h1>
+  <div class="stats" id="stats"></div>
+  <div class="controls">
+    <input type="search" id="search" list="names" placeholder="Find a component…" aria-label="Find a component">
+    <datalist id="names"></datalist>
+    <div class="seg" role="group" aria-label="Direction">
+      <button id="m-impact" aria-pressed="true" title="Who is affected if this changes">What breaks</button>
+      <button id="m-deps" aria-pressed="false" title="What this needs to work">What it uses</button>
+    </div>
+    <label class="toggle"><input type="checkbox" id="t-orphans" checked> orphans</label>
+  </div>
+</header>
+<main>
+  <div id="cy" aria-label="Lineage graph"></div>
+  <aside id="panel"></aside>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
+<script>
+const DATA = /*__LINEAGE_DATA__*/null;
+const KINDS = { process: "Process", subprocess: "Sub-process", connection: "Connection", operation: "Operation",
+                profile: "Profile", map: "Map", other: "Other", deleted: "Deleted" };
+const SHAPES = { process: "round-rectangle", subprocess: "round-rectangle", connection: "diamond", operation: "ellipse",
+                 profile: "rectangle", map: "hexagon", other: "ellipse", deleted: "ellipse" };
+const byId = Object.fromEntries(DATA.nodes.map(n => [n.id, n]));
+let mode = "impact", selected = null, cy;
+
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const plural = (n, w) => `${n} ${w}${n === 1 ? "" : (w.endsWith("s") ? "es" : "s")}`;
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function style() {
+  return [
+    { selector: "node", style: {
+        "label": "data(name)", "font-size": 8, "color": css("--ink"), "text-valign": "bottom", "text-margin-y": 3,
+        "text-wrap": "wrap", "text-max-width": 78, "text-background-color": css("--bg"),
+        "text-background-opacity": 0.85, "text-background-padding": 1, "text-background-shape": "roundrectangle", "background-color": e => css("--k-" + e.data("kind")),
+        "shape": e => SHAPES[e.data("kind")] || "ellipse", "width": "data(size)", "height": "data(size)",
+        "border-width": 0, "transition-property": "opacity", "transition-duration": "150ms" } },
+    { selector: "node[kind = 'process'], node[kind = 'subprocess']", style: { "width": e => e.data("size") * 1.4 } },
+    { selector: "node[failures > 0][kind = 'process']", style: { "border-width": 3, "border-color": css("--fail") } },
+    { selector: "node[kind = 'deleted']", style: { "background-opacity": 0.25, "border-width": 2, "border-style": "dashed",
+        "border-color": css("--k-deleted") } },
+    { selector: "edge", style: { "width": 1.2, "line-color": css("--edge"), "target-arrow-color": css("--edge"),
+        "target-arrow-shape": "triangle", "arrow-scale": 0.8, "curve-style": "bezier", "opacity": 0.9 } },
+    { selector: "edge[?drift]", style: { "line-style": "dashed", "line-color": css("--fail"), "target-arrow-color": css("--fail") } },
+    { selector: ".faded", style: { "opacity": Number(css("--faded")) } },
+    { selector: ".hit", style: { "opacity": 1 } },
+    { selector: "edge.hit", style: { "line-color": css("--accent"), "target-arrow-color": css("--accent"), "width": 2.2 } },
+    { selector: "node.focus", style: { "border-width": 4, "border-color": css("--accent") } },
+  ];
+}
+
+function init() {
+  const roots = DATA.nodes.filter(n => n.kind === "process").map(n => n.id);
+  cy = cytoscape({
+    container: document.getElementById("cy"),
+    elements: [
+      ...DATA.nodes.map(n => ({ data: { ...n, size: n.kind === "process" ? 16 + 2.5 * Math.log2(1 + (n.runs || 0)) : 14 } })),
+      ...DATA.edges.map(e => ({ data: { ...e, drift: e.dangling || e.inApi !== e.inXml } })),
+    ],
+    style: style(),
+    // layered for small accounts (reads top-down: processes, then what they use); force-directed once a
+    // single row of shared components would get too wide to read
+    layout: DATA.nodes.length <= 40
+      ? { name: "breadthfirst", directed: true, roots, spacingFactor: 1.6, padding: 30, avoidOverlap: true, fit: true }
+      : { name: "cose", animate: false, nodeRepulsion: () => 9000, idealEdgeLength: () => 70, padding: 30, fit: true,
+          randomize: false },
+    wheelSensitivity: 0.25, minZoom: 0.2, maxZoom: 3,
+  });
+  cy.on("tap", "node", e => select(e.target.id()));
+  new ResizeObserver(() => { cy.resize(); if (!selected) cy.fit(undefined, 30); }).observe(document.getElementById("cy"));
+  cy.on("tap", e => { if (e.target === cy) clear(); });
+
+  const orphans = DATA.nodes.filter(n => n.orphan).length;
+  const drift = DATA.edges.filter(e => e.dangling || e.inApi !== e.inXml).length;
+  document.getElementById("stats").textContent =
+    `${plural(DATA.nodes.length, "component")} · ${plural(DATA.edges.length, "link")} · ` +
+    `${plural(orphans, "orphan")} · ${drift} drift · ${DATA.source} data, ${DATA.generatedAt}`;
+  document.getElementById("names").innerHTML = DATA.nodes.filter(n => n.kind !== "deleted")
+    .map(n => `<option value="${esc(n.name)}">`).join("");
+
+  const q = new URLSearchParams(location.search).get("component");
+  const start = q && (byId[q] || DATA.nodes.find(n => n.name.toLowerCase() === q.toLowerCase()));
+  start ? select(start.id) : overview();
+}
+
+function setMode(m) {
+  mode = m;
+  document.getElementById("m-impact").setAttribute("aria-pressed", m === "impact");
+  document.getElementById("m-deps").setAttribute("aria-pressed", m === "deps");
+  if (selected) select(selected);
+}
+
+function clear() {
+  selected = null;
+  cy.elements().removeClass("faded hit focus");
+  history.replaceState(null, "", location.pathname);
+  overview();
+}
+
+function select(id) {
+  selected = id;
+  const node = cy.getElementById(id);
+  const reach = mode === "impact" ? node.predecessors() : node.successors();
+  cy.elements().removeClass("hit focus").addClass("faded");
+  reach.union(node).removeClass("faded").addClass("hit");
+  node.addClass("focus");
+  cy.animate({ fit: { eles: reach.union(node), padding: 60 }, duration: 300 });
+  const url = new URL(location.href); url.searchParams.set("component", id);
+  history.replaceState(null, "", url);
+  card(byId[id], reach);
+}
+
+function runsLine(n) {
+  const dep = n.deployedVersion ? `deployed v${n.deployedVersion}` : "not deployed";
+  return n.kind === "process" ? ` <small>${dep} · ${plural(n.runs || 0, "run")}, ${plural(n.failures || 0, "failure")}</small>` : "";
+}
+
+function card(n, reach) {
+  const p = document.getElementById("panel");
+  const kind = KINDS[n.kind] + (n.subType ? ` · ${n.subType}` : "");
+  let html = `<div class="kind">${esc(kind)}${n.folder ? " · " + esc(n.folder) : ""}</div><h2>${esc(n.name)}</h2>`;
+  if (n.kind === "deleted") {
+    html += `<p class="warn">This component was deleted, but something still points at it.</p>`;
+  } else if (n.kind === "process") {
+    html += `<div class="big">${n.deployedVersion ? `Deployed <b>v${n.deployedVersion}</b>` : "<b>Never deployed</b>"} ·
+             <b>${plural(n.runs, "run")}</b>, <b>${plural(n.failures, "failure")}</b> in 30 days</div>`;
+  } else {
+    html += `<div class="big">Changing this affects <b>${plural(n.processesTotal, "process")}</b>
+             (${n.deployedProcesses} deployed): <b>${plural(n.runs, "run")}</b> and
+             <b>${plural(n.failures, "failure")}</b> in the last 30 days.</div>`;
+  }
+  if (n.modifiedAt) html += `<div class="meta">v${n.version} · last edited ${n.modifiedAt.replace("T", " ")} by ${esc(n.modifiedBy)}</div>`;
+  if (n.environments && n.environments.length) html += `<div class="meta">Environments: ${n.environments.map(esc).join(", ")}</div>`;
+  if (n.risk) html += `<div class="meta">Risk score ${n.risk} = processes × log(1 + runs) × (2 if deployed)</div>`;
+  if (n.orphan) html += `<div class="warn">Orphan: ${esc(n.orphan)}</div>`;
+  if (n.inCycle) html += `<div class="warn">Part of a sub-process cycle</div>`;
+
+  const users = reach.nodes().map(x => byId[x.id()]).filter(Boolean);
+  const title = mode === "impact" ? "Affected if this changes" : "Needs these to work";
+  const list = users.sort((a, b) => (b.runs || 0) - (a.runs || 0) || a.name.localeCompare(b.name));
+  html += `<h3>${title} (${list.length})</h3>`;
+  html += list.length ? `<ul>${list.map(u => `<li><a href="?component=${u.id}" data-id="${u.id}">${esc(u.name)}</a>
+          <small>${KINDS[u.kind]}</small>${runsLine(u)}</li>`).join("")}</ul>`
+        : `<p class="hint">Nothing${mode === "impact" ? " uses this" : " here"}.</p>`;
+
+  const out = cy.getElementById(n.id).outgoers("edge").map(e => e.data());
+  if (out.length) {
+    html += `<h3>Direct links</h3><ul>${out.map(e => {
+      const c = byId[e.target];
+      const where = e.shapes.length ? ` <small>in shape “${e.shapes.map(esc).join("”, “")}”</small>` : "";
+      const drift = e.dangling ? ` <small class="warn">deleted</small>` : e.inApi !== e.inXml ?
+        ` <small class="warn">${e.inApi ? "API only (stale)" : "XML only"}</small>` : "";
+      return `<li>${esc(c ? c.name : e.target)}${where}${drift}</li>`; }).join("")}</ul>`;
+  }
+  html += `<p class="hint"><a href="#" id="back">← overview</a></p>`;
+  p.innerHTML = html;
+  bindLinks();
+}
+
+function overview() {
+  const top = DATA.nodes.filter(n => n.kind !== "process" && n.kind !== "deleted" && n.processesTotal > 0)
+    .sort((a, b) => b.risk - a.risk || b.processesTotal - a.processesTotal).slice(0, 8);
+  const orphans = DATA.nodes.filter(n => n.orphan);
+  const drift = DATA.edges.filter(e => e.dangling || e.inApi !== e.inXml);
+  let html = `<h2>What breaks if I change this?</h2>
+    <p class="hint">Click any component. The graph lights up everything that depends on it, and the counts
+    come from the last 30 days of real runs. Switch to “What it uses” to go the other way.</p>
+    <h3>Riskiest shared components</h3><ul>${top.map(n => `<li><a href="?component=${n.id}" data-id="${n.id}">${esc(n.name)}</a>
+    <small>${plural(n.processesTotal, "process")}, ${plural(n.runs, "run")} · risk ${n.risk}</small></li>`).join("")}</ul>`;
+  html += `<h3>Orphans (${orphans.length})</h3>` + (orphans.length ? `<ul>${orphans.map(n =>
+    `<li><a href="?component=${n.id}" data-id="${n.id}">${esc(n.name)}</a> <small>${esc(n.orphan)}</small></li>`).join("")}</ul>`
+    : `<p class="hint">None.</p>`);
+  html += `<h3>Drift (${drift.length})</h3>` + (drift.length ? `<ul>${drift.map(e => {
+    const a = byId[e.source], b = byId[e.target];
+    const why = e.dangling ? "points at a deleted component" : e.inApi ? "API lists it, XML doesn't use it" : "XML uses it, API doesn't list it";
+    return `<li>${esc(a.name)} → ${esc(b ? b.name : e.target)} <small>${why}</small></li>`; }).join("")}</ul>`
+    : `<p class="hint">None: the Platform API and the component XML agree on every link.</p>`);
+  html += `<div class="legend">${Object.entries(KINDS).filter(([k]) => DATA.nodes.some(n => n.kind === k))
+    .map(([k, v]) => `<span><i style="background:var(--k-${k})"></i>${v}</span>`).join("")}
+    <span><i style="background:transparent;border:2px solid var(--fail)"></i>failed in 30 days</span>
+    <span><i style="background:transparent;border:2px dashed var(--fail)"></i>drift link</span></div>`;
+  document.getElementById("panel").innerHTML = html;
+  bindLinks();
+}
+
+function bindLinks() {
+  document.querySelectorAll("#panel a[data-id]").forEach(a => a.addEventListener("click", ev => {
+    ev.preventDefault(); select(a.dataset.id); }));
+  const back = document.getElementById("back");
+  if (back) back.addEventListener("click", ev => { ev.preventDefault(); clear(); });
+}
+
+document.getElementById("m-impact").onclick = () => setMode("impact");
+document.getElementById("m-deps").onclick = () => setMode("deps");
+document.getElementById("search").addEventListener("change", ev => {
+  const n = DATA.nodes.find(x => x.name.toLowerCase() === ev.target.value.trim().toLowerCase());
+  if (n) select(n.id);
+});
+document.getElementById("t-orphans").addEventListener("change", ev => {
+  cy.nodes().filter(n => n.data("orphan")).style("display", ev.target.checked ? "element" : "none");
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => cy && cy.style(style()));
+init();
+</script>
+</body>
+</html>
