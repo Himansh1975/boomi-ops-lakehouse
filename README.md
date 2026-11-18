@@ -64,7 +64,7 @@ API details and their sources: [docs/boomi_api_notes.md](docs/boomi_api_notes.md
 Boomi's "Show Where Used" answers one component at a time, in the UI. Blast Radius crawls the whole account and keeps the answer in the lake.
 
 **What it shows**
-- Click any component in the viewer: everything that depends on it lights up, with "changing this affects N processes (D deployed), R runs and F failures in the last 30 days".
+- Click any component in the viewer: everything that depends on it moves into view, left to right, with "changing this affects N processes (D deployed), R runs and F failures in the last 30 days" and a per-process run-health bar. Switch to "What it uses" to go the other way, or download the affected list as CSV.
 - **Orphans:** components no process reaches (including "only used by other orphans"), and processes never deployed.
 - **Hotspots:** shared components with the widest reach, weighted by real run volume.
 - **Drift:** links the Platform API and the component XML disagree on, links to deleted components, and processes edited but not redeployed.
@@ -77,7 +77,11 @@ Boomi's "Show Where Used" answers one component at a time, in the UI. Blast Radi
 - **Weighted by reality.** A connection used by 14 processes that never run matters less than one used by 3 that run every 10 minutes. Runs count from top-level processes only, because a sub-process runs inside its parent.
 - **Privacy.** `createdBy` / `modifiedBy` hold user emails. The crawler replaces them with a stable pseudonym (`user-<hash>`) before anything is written.
 
-![Blast Radius overview on the 70-component replay account: riskiest shared components, 7 orphans, 2 drift links](docs/img/blast-radius-overview.png)
+**The viewer** is one HTML file with no libraries and no CDN, so it opens offline and hosts anywhere static. It borrows from data-lineage tools people already know: Dagster-style cards in columns by kind (processes → sub-processes → maps → operations → connections → profiles, rows ordered to cut line crossings), a DataHub/OpenMetadata-style focus view, health shown on the cards, search with `/`, and a tour (`T`) that steps through the riskiest components for screen recordings. Links can open a component directly: `?component=<name or id>&mode=deps&theme=dark`.
+
+![Focus view in dark mode: HR API (REST) and the 8 processes that depend on it, directly and through a sub-process](docs/img/blast-radius-focus.png)
+
+![Overview of the 70-component replay account: every component in columns by kind, riskiest shared components, orphans and drift](docs/img/blast-radius-overview.png)
 
 ### MCP server for Claude and the triage agent
 

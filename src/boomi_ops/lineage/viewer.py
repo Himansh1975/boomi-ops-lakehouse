@@ -2,7 +2,11 @@
 
     python -m boomi_ops.run lineage viewer --out site/index.html
 
-The page needs no server: open the file, or host it anywhere static (GitHub Pages in CI, from replay data).
+The page needs no server and no internet: no libraries, no CDN, just HTML, CSS and SVG drawn by a small script.
+Open the file, or host it anywhere static (GitHub Pages in CI, from replay data).
+
+Link options: ?component=<id or name>  ?mode=deps  ?theme=light|dark  ?tour=1 (steps through the riskiest
+components, handy for screen recordings).
 Only gold tables go in, and those already hold pseudonyms instead of emails.
 """
 from __future__ import annotations
