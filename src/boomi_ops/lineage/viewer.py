@@ -2,10 +2,12 @@
 
     python -m boomi_ops.run lineage viewer --out site/index.html
 
-The page needs no server and no internet: no libraries, no CDN, just HTML, CSS and SVG drawn by a small script.
+The page needs no server and no libraries: HTML, CSS and SVG drawn by a small script, in the HN datasheet style
+(paper, ink, one signal colour, schematic traces, a title block). IBM Plex loads from Google Fonts when online; offline it falls back
+to system fonts.
 Open the file, or host it anywhere static (GitHub Pages in CI, from replay data).
 
-Link options: ?component=<id or name>  ?mode=deps  ?theme=light|dark  ?tour=1 (steps through the riskiest
+Link options: ?component=<id, name or designator such as C3>  ?mode=deps  ?theme=light|dark  ?tour=1 (steps through the riskiest
 components, handy for screen recordings).
 Only gold tables go in, and those already hold pseudonyms instead of emails.
 """
