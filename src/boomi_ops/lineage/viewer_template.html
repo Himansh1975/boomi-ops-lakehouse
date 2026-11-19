@@ -13,6 +13,7 @@
 :root {
   --paper: #F7F6F2; --ink: #151515; --ink-2: #55534E; --rule: #D9D6CE;
   --signal: #FFD400; --signal-ink: #7A5F00; --fault: #C8102E;
+  --canvas: #E9E7E0; --card: #FDFCF9;
   --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
   --r: 2px;
@@ -22,11 +23,13 @@
   :root:not([data-theme="light"]) {
     --paper: #121211; --ink: #ECEAE4; --ink-2: #A6A39B; --rule: #2C2B28;
     --signal-ink: #FFD400; --fault: #FF5A5F; --sel-line: var(--signal); --sel-under: transparent;
+    --canvas: #0B0B0A; --card: #1D1D1B;
   }
 }
 :root[data-theme="dark"] {
   --paper: #121211; --ink: #ECEAE4; --ink-2: #A6A39B; --rule: #2C2B28;
   --signal-ink: #FFD400; --fault: #FF5A5F; --sel-line: var(--signal); --sel-under: transparent;
+  --canvas: #0B0B0A; --card: #1D1D1B;
 }
 /* ===================================================================== */
 
@@ -70,41 +73,52 @@ button.b:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---- layout ---- */
 main { display: grid; grid-template-columns: minmax(0, 1fr) 400px; min-height: 0; }
-#viewport { position: relative; overflow: hidden; cursor: grab; touch-action: none; background: var(--paper); }
+#viewport { position: relative; overflow: hidden; cursor: grab; touch-action: none; background: var(--canvas); }
 #viewport.panning { cursor: grabbing; }
 #stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
 #stage.animate { transition: transform .26s ease-out; }
 #edges { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
-.colhead { position: absolute; white-space: nowrap; font: 400 13px var(--mono); color: var(--ink-2); }
+.colhead { position: absolute; white-space: nowrap; font: 600 14px var(--mono); color: var(--ink); }
 .boot *, .boot #stage { transition: none !important; }
 
 /* ---- traces ---- */
-path.e { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-linejoin: miter; opacity: .55; }
+path.e { fill: none; stroke: var(--ink-2); stroke-width: 1.3; stroke-linejoin: round; transition: opacity .15s; }
+#edges.ov path.e { opacity: .32; }
+#edges.ov.hovering path.e { opacity: .1; }
+#edges.ov.hovering path.e.hov { opacity: 1; stroke: var(--ink); stroke-width: 2.2; }
+#edges.ov path.e.drift { opacity: .9; }
 path.u { fill: none; stroke: transparent; stroke-width: 8; stroke-linejoin: miter; }
 path.e.drift { stroke: var(--fault); stroke-dasharray: 5 4; opacity: 1; }
 path.e.dim { stroke: var(--rule); opacity: 1; }
 path.e.gone, path.u.gone { display: none; }
 path.e.hit { stroke: var(--sel-line); stroke-width: 2.2; opacity: 1; }
+path.e.reach { stroke: var(--ink); stroke-width: 1.5; opacity: 1; }
 path.u.hit { stroke: var(--sel-under); }
-circle.jd { fill: var(--ink); opacity: .55; }
+circle.jd { fill: var(--ink-2); }
 circle.jd.hit { fill: var(--sel-line); opacity: 1; }
 circle.jd.dim { fill: var(--rule); opacity: 1; }
 
 /* ---- parts ---- */
-.n { position: absolute; width: 228px; height: 46px; border: 1px solid var(--ink); border-radius: var(--r); background: var(--paper);
-     display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 6px; align-content: center;
-     padding: 0 10px 0 8px; cursor: pointer; user-select: none; transition: opacity .2s; }
-.n .des { grid-row: span 2; font: 400 11px var(--mono); color: var(--ink-2); padding-top: 3px; }
-.n .nm { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.n .mt { font: 400 11px var(--mono); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; grid-column: 2; }
+.n { position: absolute; width: 228px; height: 50px; border: 1.5px solid var(--ink); border-radius: var(--r); background: var(--card);
+     display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 9px; align-content: center;
+     padding: 0 10px 0 8px; cursor: pointer; user-select: none; transition: opacity .2s; overflow: hidden; }
+.n .des { grid-row: span 2; align-self: center; min-width: 30px; text-align: center; font: 600 11.5px var(--mono);
+          background: var(--ink); color: var(--card); padding: 2px 4px; border-radius: var(--r); }
+.n .nm { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.n .mt { font: 400 12px var(--mono); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; grid-column: 2; }
+.n .hb { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--rule); }
+.n .hb i { display: block; height: 100%; background: var(--fault); }
 .n .tag { grid-row: 1; grid-column: 3; align-self: center; font: 400 10px var(--mono); border: 1px solid var(--ink-2); color: var(--ink-2); padding: 0 4px; border-radius: var(--r); }
 .n:hover .nm { text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .n.orphan, .n.deleted { border-style: dashed; border-color: var(--ink-2); }
+.n.orphan .des, .n.deleted .des { background: var(--ink-2); }
 .n.deleted .nm { font-weight: 400; font-style: italic; }
-.n.ctx { border-color: var(--rule); }
+.n.ctx { border-color: var(--ink-2); opacity: .7; }
 .n.ctx .nm { color: var(--ink-2); }
 .n.gone { opacity: 0; pointer-events: none; }
-.n.focus { border-width: 2px; padding-left: 13px; }
+.n.focus { border-width: 2.5px; padding-left: 14px; }
+.n.nbr { border-width: 2.5px; }
+.n.focus .des { background: var(--signal); color: #151515; }
 .n.focus::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--signal); }
 
 /* ---- canvas furniture ---- */
@@ -127,22 +141,31 @@ circle.jd.dim { fill: var(--rule); opacity: 1; }
 .tb .v { font-size: 11.5px; }
 .tb .title .v { font: 600 13px var(--sans); text-transform: uppercase; letter-spacing: .04em; }
 .tb .first { padding-left: 15px; }
-.res { position: relative; border: 0; background: none; padding: 0; cursor: help; display: inline-block; vertical-align: middle; }
-.res .tip, .note { position: absolute; right: 0; bottom: calc(100% + 8px); width: 250px; background: var(--paper); border: 1px solid var(--ink);
+.note { position: absolute; right: 0; bottom: calc(100% + 8px); width: 250px; background: var(--paper); border: 1px solid var(--ink);
                    border-radius: var(--r); padding: 8px 10px; font: 400 11px/1.45 var(--mono); color: var(--ink); text-align: left; display: none; }
-.res:hover .tip, .res:focus .tip { display: block; }
-.bug { position: absolute; top: -7px; right: 42px; width: 14px; height: 10px; border: 0; padding: 0; background: none; cursor: pointer; }
+.bug { position: absolute; top: -9px; right: 46px; width: 16px; height: 12px; border: 0; padding: 0; background: none; cursor: pointer; }
 .bug svg { display: block; transition: transform .25s ease-out; }
 .bug:hover svg, .bug:focus svg { transform: translateX(-10px); }
 .note { bottom: calc(100% + 10px); width: 280px; border-left: 6px solid var(--signal); font: 400 12px/1.45 var(--sans); }
 .note.on { display: block; }
+
+/* ---- annotations: generated pencil marks, 1 to 3 per screen, never on data ---- */
+.pencil { fill: none; stroke: var(--ink-2); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.tb .rev { position: relative; }
+.tb .ring { position: absolute; left: 2px; top: 1px; width: 44px; height: 34px; overflow: visible; pointer-events: none; }
+#hint-layer { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+#hint-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.hint { position: absolute; width: 190px; font: 400 14px/1.4 var(--sans); color: var(--ink-2); font-style: italic; }
+.hint b { font-style: normal; color: var(--ink); }
+/* highlighter: a marker swipe with ragged ends instead of a flat box */
+mark, .lead mark { background: transparent no-repeat center / 100% 100%; color: #151515; padding: 1px 4px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 24' preserveAspectRatio='none'%3E%3Cpath d='M3 6.5C19 3.6 36 5.4 52 3.9S84 3.1 97.5 4.6L99 9.4 97.8 17.6C83 20.4 66 18.4 49 19.8S15 20.9 2.2 19.4L1 13.2Z' fill='%23FFD400'/%3E%3C/svg%3E"); }
 
 /* ---- side panel ---- */
 aside { border-left: 1px solid var(--ink); overflow: auto; padding: 16px 18px 28px; }
 .kind { font: 400 12px var(--mono); color: var(--ink-2); }
 aside h2 { font-size: 20px; line-height: 1.25; font-weight: 600; margin: 4px 0 10px; word-break: break-word; }
 .lead { font-size: 15px; margin: 0 0 14px; }
-.lead mark { background: var(--signal); color: #151515; padding: 0 3px; }
 aside h3 { font-size: 13px; font-weight: 600; margin: 22px 0 6px; display: flex; gap: 8px; align-items: baseline; }
 aside h3 .act { margin-left: auto; font-weight: 400; }
 .link { background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--signal);
@@ -201,6 +224,7 @@ kbd { font: 600 12px var(--mono); border: 1px solid var(--ink); border-radius: v
 <main>
   <div id="viewport" aria-label="Lineage graph">
     <div id="stage"><div id="cols"></div><svg id="edges"><g id="g-under"></g><g id="g-lines"></g><g id="g-dots"></g></svg><div id="nodes"></div></div>
+    <div id="hint-layer" aria-hidden="true"><svg id="hint-svg"></svg><div id="hint-text"></div></div>
     <div class="tourbar" id="tourbar"><span id="tourtext"></span><span class="bar"><i id="tourprog"></i></span><button class="link" id="tourstop">Stop</button></div>
     <div class="zoom">
       <button class="b" id="zin" aria-label="Zoom in">+</button>
@@ -209,27 +233,15 @@ kbd { font: 600 12px var(--mono); border: 1px solid var(--ink); border-radius: v
     </div>
     <div class="tb" role="group" aria-label="Title block">
       <button class="bug" id="bug" aria-label="Something small is sitting on this line">
-        <svg width="14" height="10" viewBox="0 0 14 12" aria-hidden="true"><g fill="var(--ink)" stroke="var(--ink)">
-          <ellipse cx="6" cy="6" rx="4" ry="3.2"/><circle cx="11" cy="6" r="1.8"/>
-          <path d="M4 3 2.5 1M6 2.8V.6M8 3l1.5-2M4 9 2.5 11M6 9.2v2.2M8 9l1.5 2" stroke-width="1" fill="none"/></g></svg>
+        <svg width="16" height="12" viewBox="0 0 32 24" aria-hidden="true" id="bug-svg"></svg>
       </button>
       <div class="note" id="note" role="status"><b>You found the bug in between.</b><br>HN-002 rev C, built by Himansh Negi: integrations, pipelines, and the bugs in between.</div>
       <div class="title first"><span class="k">Title</span><span class="v">Blast Radius</span></div>
       <div><span class="k">Part</span><span class="v">HN-002</span></div>
-      <div><span class="k">Rev</span><span class="v">C</span></div>
+      <div class="rev"><span class="k">Rev</span><span class="v">C</span><svg class="ring" id="rev-ring" viewBox="0 0 44 34" aria-hidden="true"></svg></div>
       <div class="first"><span class="k">Drawn</span><span class="v">H. Negi</span></div>
       <div><span class="k">Data</span><span class="v" id="tb-src"></span></div>
-      <div><span class="k">Ver</span>
-        <button class="res" aria-describedby="res-tip" aria-label="Version shown as resistor bands">
-          <svg width="50" height="14" viewBox="0 0 56 16" aria-hidden="true">
-            <path d="M0 8h10M46 8h10" stroke="var(--ink)" stroke-width="1.5"/>
-            <rect x="10" y="2" width="36" height="12" rx="5" fill="#E2D2B0" stroke="var(--ink)" stroke-width="1"/>
-            <rect x="16" y="2" width="4" height="12" fill="#7B4A12"/><rect x="23" y="2" width="4" height="12" fill="#E8590C"/>
-            <rect x="30" y="2" width="4" height="12" fill="#151515"/><rect x="39" y="2" width="3" height="12" fill="#B8962E"/>
-          </svg>
-          <span class="tip" id="res-tip" role="tooltip">Resistor code, an EE habit: brown 1, orange 3, black 0. Version 1.3.0.</span>
-        </button>
-      </div>
+      <div><span class="k">Ver</span><span class="v">1.3.0</span></div>
     </div>
   </div>
   <aside id="panel" aria-live="polite"></aside>
@@ -263,7 +275,7 @@ const LABEL = { process: "process", subprocess: "sub-process", map: "map", opera
                 connection: "connection", profile: "profile", other: "component", deleted: "deleted" };
 const COL_TITLE = ["Processes", "Sub-processes", "Maps", "Operations", "Connections", "Profiles"];
 const PREFIX = { process: "P", subprocess: "S", map: "M", operation: "A", connection: "C", profile: "D", other: "Q", deleted: "X" };
-const W = 228, H = 46, GAP_X = 308, GAP_Y = 62, MOVE_MS = 260;
+const W = 228, H = 50, GAP_X = 308, GAP_Y = 68, MOVE_MS = 260;
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const fmt = n => (n || 0).toLocaleString("en-US");
 const plural = (n, w) => `${fmt(n)} ${w}${n === 1 ? "" : (/(s|sh|ch|x)$/.test(w) ? "es" : "s")}`;
@@ -271,6 +283,41 @@ const pct = (a, b) => b ? `${(a / b * 100).toFixed(1)} %` : "";
 const $ = id => document.getElementById(id);
 const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
                 set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } } };
+
+
+/* ---------- pencil: generated hand-drawn marks (seeded, so they look the same every load) ---------- */
+function rng(seed) { let x = (seed * 2654435761) >>> 0 || 1; return () => ((x = (Math.imul(x, 1664525) + 1013904223) >>> 0) / 4294967296); }
+function smooth(pts) {
+  let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += `C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+  }
+  return d;
+}
+function sketchEllipse(cx, cy, rx, ry, seed, passes = 2) {
+  const r = rng(seed), out = [];
+  for (let k = 0; k < passes; k++) {
+    const a0 = r() * Math.PI * 2, turns = 1.06 + r() * 0.1, n = 20, pts = [];
+    for (let i = 0; i <= n; i++) { const a = a0 + turns * Math.PI * 2 * i / n, j = 1 + (r() - 0.5) * 0.08; pts.push([cx + Math.cos(a) * rx * j, cy + Math.sin(a) * ry * j]); }
+    out.push(smooth(pts));
+  }
+  return out;
+}
+function sketchLine(x1, y1, x2, y2, seed, bow = 0.08, wob = 1.2) {
+  const r = rng(seed), dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len;
+  const b = len * bow * (r() > 0.5 ? 1 : -1) * (0.6 + r() * 0.4), n = Math.max(3, Math.round(len / 28)), pts = [];
+  for (let i = 0; i <= n; i++) { const t = i / n, bulge = Math.sin(Math.PI * t) * b, w = (i && i < n) ? wob : 0;
+    pts.push([x1 + dx * t + nx * bulge + (r() - 0.5) * w, y1 + dy * t + ny * bulge + (r() - 0.5) * w]); }
+  return smooth(pts);
+}
+function sketchArrow(x1, y1, x2, y2, seed) {
+  const a = Math.atan2(y2 - y1, x2 - x1), L = 12;
+  return [sketchLine(x1, y1, x2, y2, seed, 0.12), sketchLine(x2 - L * Math.cos(a - 0.5), y2 - L * Math.sin(a - 0.5), x2, y2, seed + 7, 0.02, 0.6),
+          sketchLine(x2 - L * Math.cos(a + 0.5), y2 - L * Math.sin(a + 0.5), x2, y2, seed + 11, 0.02, 0.6)];
+}
+const pencilPaths = (ds, style = "") => ds.map(d => `<path class="pencil" style="${style}" d="${d}"/>`).join("");
 
 /* ---------- graph ---------- */
 const nodes = DATA.nodes.map(n => ({ ...n }));
@@ -344,11 +391,33 @@ function card(n) {
   el.className = "n" + (n.orphan ? " orphan" : "") + (n.kind === "deleted" ? " deleted" : "");
   el.tabIndex = 0; el.setAttribute("role", "button"); el.dataset.id = n.id;
   const tag = n.orphan ? '<span class="tag">orphan</span>' : n.inCycle ? '<span class="tag">cycle</span>' : "";
-  el.innerHTML = `<span class="des">${n.des}</span><span class="nm">${esc(n.kind === "deleted" ? "Deleted component" : n.name)}</span>${tag}<span class="mt">${partMeta(n)}</span>`;
+  const rate = n.kind === "process" && n.runs ? Math.min(1, (n.failures || 0) / n.runs) : null;
+  el.innerHTML = `<span class="des">${n.des}</span><span class="nm">${esc(n.kind === "deleted" ? "Deleted component" : n.name)}</span>${tag}<span class="mt">${partMeta(n)}</span>`
+    + (rate !== null ? `<span class="hb" title="${(rate * 100).toFixed(1)} % of runs failed"><i style="width:${rate * 100}%"></i></span>` : "");
   el.setAttribute("aria-label", `${n.des} ${n.name}, ${LABEL[n.kind]}`);
   el.addEventListener("click", ev => { ev.stopPropagation(); if (!moved) select(n.id); });
+  el.addEventListener("mouseenter", () => hover(n.id));
+  el.addEventListener("mouseleave", unhover);
+  el.addEventListener("focus", () => hover(n.id));
+  el.addEventListener("blur", unhover);
   el.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(n.id); } });
   return el;
+}
+function hover(id) {
+  if (selected) return;
+  $("edges").classList.add("hovering");
+  const nb = new Set([id]);
+  for (const r of edgeEls) {
+    const on = r.e.source === id || r.e.target === id;
+    r.p.classList.toggle("hov", on);
+    if (on) { nb.add(r.e.source); nb.add(r.e.target); }
+  }
+  for (const n of nodes) nodeEls[n.id].classList.toggle("nbr", nb.has(n.id));
+}
+function unhover() {
+  $("edges").classList.remove("hovering");
+  for (const r of edgeEls) r.p.classList.remove("hov");
+  for (const n of nodes) nodeEls[n.id].classList.remove("nbr");
 }
 function build() {
   for (const n of nodes) { nodeEls[n.id] = card(n); $("nodes").appendChild(nodeEls[n.id]); }
@@ -360,48 +429,85 @@ function build() {
   }
 }
 
-/* ---------- traces: right angles, a shared bus per target (or per source when tracing dependencies) ---------- */
-let cur = {}, target = {}, busSide = "target";
+/* ---------- traces: right angles with rounded corners, one track per link ----------
+   Links never share a vertical line, so there is nothing to decode. The only place lines are allowed to
+   meet is the selected part: there they join one bus with junction dots, because that meeting point is
+   the answer (these processes all depend on this). */
+let cur = {}, target = {}, lanes = {};
+const eid = e => e.source + ">" + e.target;
+const LANE_STEP = 5, PORT_STEP = 8;
+function computeLanes(coords) {
+  lanes = {};
+  const vis = edgeEls.map(r => r.e).filter(e => coords[e.source] && coords[e.target] && !edgeEls.find(r => r.e === e).p.classList.contains("gone"));
+  const byS = {}, byT = {}, byCol = {}, loops = {};
+  for (const e of vis) {
+    (byS[e.source] ||= []).push(e); (byT[e.target] ||= []).push(e);
+    const a = coords[e.source], b = coords[e.target];
+    if (b.x > a.x + 1) (byCol[b.x] ||= []).push(e); else (loops[a.x] ||= []).push(e);
+  }
+  const busOf = e => !selected ? null : (mode === "impact" ? (e.target === selected ? "t" : null) : (e.source === selected ? "s" : null));
+  const ports = (list, key, other) => {
+    list.sort((x, y) => coords[x[other]].y - coords[y[other]].y);
+    const k = list.length, step = Math.min(PORT_STEP, (H - 16) / Math.max(1, k - 1));
+    list.forEach((e, i) => { (lanes[eid(e)] ||= {})[key] = (i - (k - 1) / 2) * step; });
+  };
+  for (const list of Object.values(byS)) ports(list, "exit", "target");
+  for (const list of Object.values(byT)) ports(list, "entry", "source");
+  const gap = GAP_X - W, nl = Math.max(1, Math.floor((gap - 24) / LANE_STEP));
+  for (const [x, list] of Object.entries(byCol)) {
+    list.sort((p, q) => coords[p.target].y - coords[q.target].y || coords[p.source].y - coords[q.source].y);
+    list.forEach((e, i) => { lanes[eid(e)].lx = +x - 12 - (i % nl) * LANE_STEP; });
+  }
+  for (const [x, list] of Object.entries(loops)) list.forEach((e, i) => { lanes[eid(e)].lx = +x + W + 12 + (i % 6) * LANE_STEP; lanes[eid(e)].loop = true; });
+  for (const e of vis) {
+    const L = lanes[eid(e)], bus = busOf(e);
+    if (!bus) continue;
+    L.bus = bus;
+    if (bus === "t") { L.entry = 0; L.lx = coords[e.target].x - 28; }
+    else { L.exit = 0; L.lx = coords[e.source].x + W + 28; }
+  }
+}
+function ortho(pts, r) {
+  let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+  for (let i = 1; i < pts.length - 1; i++) {
+    const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], [x2, y2] = pts[i + 1];
+    const l1 = Math.hypot(x1 - x0, y1 - y0), l2 = Math.hypot(x2 - x1, y2 - y1), rr = Math.min(r, l1 / 2, l2 / 2);
+    if (rr < 0.5) { d += `L${x1.toFixed(1)} ${y1.toFixed(1)}`; continue; }
+    d += `L${(x1 - (x1 - x0) / l1 * rr).toFixed(1)} ${(y1 - (y1 - y0) / l1 * rr).toFixed(1)}Q${x1.toFixed(1)} ${y1.toFixed(1)} ${(x1 + (x2 - x1) / l2 * rr).toFixed(1)} ${(y1 + (y2 - y1) / l2 * rr).toFixed(1)}`;
+  }
+  const z = pts[pts.length - 1];
+  return d + `L${z[0].toFixed(1)} ${z[1].toFixed(1)}`;
+}
 function route(e) {
-  const a = cur[e.source], b = cur[e.target];
-  if (!a || !b) return null;
-  const ay = a.y + H / 2, by = b.y + H / 2;
-  if (Math.abs(a.x - b.x) < 1) {                 // same column: loop out on the right
-    const x = a.x + W + 18;
-    return { d: `M${a.x + W} ${ay}H${x}V${by}H${b.x + W}`, bus: null };
-  }
-  if (b.x > a.x) {
-    const bx = busSide === "source" ? a.x + W + 26 : b.x - 26;
-    return { d: `M${a.x + W} ${ay}H${bx}V${by}H${b.x}`, bus: busSide === "source" ? `s${e.source}` : `t${e.target}`, bx, ay, by };
-  }
-  const bx = a.x + W + 18;
-  return { d: `M${a.x + W} ${ay}H${bx}V${by}H${b.x + W}`, bus: null };
+  const a = cur[e.source], b = cur[e.target], L = lanes[eid(e)];
+  if (!a || !b || !L) return null;
+  const ay = a.y + H / 2 + (L.exit || 0), by = b.y + H / 2 + (L.entry || 0);
+  if (L.loop) return { d: ortho([[a.x + W, ay], [L.lx, ay], [L.lx, by], [b.x + W, by]], 6) };
+  const pts = [[a.x + W, ay], [L.lx, ay], [L.lx, by], [b.x, by]];
+  return { d: ortho(pts, L.bus ? 0 : 6), bus: L.bus, lx: L.lx, ay, by };
 }
 function draw() {
   for (const n of nodes) { const c = cur[n.id]; if (c) nodeEls[n.id].style.transform = `translate(${c.x}px, ${c.y}px)`; }
-  const buses = {};
+  const bus = [];
   for (const r of edgeEls) {
     const rt = route(r.e);
     const d = rt ? rt.d : "";
     r.p.setAttribute("d", d); r.u.setAttribute("d", d);
-    if (rt && rt.bus && !r.p.classList.contains("gone")) (buses[rt.bus] ||= []).push({ rt, cls: r.p.classList.contains("hit") ? "hit" : r.p.classList.contains("dim") ? "dim" : "" });
+    if (rt && rt.bus) bus.push(rt);
   }
-  // junction dots where two or more traces join a bus
+  // junction dots: only where links meet the selected part
   let dots = "";
-  for (const list of Object.values(buses)) {
-    if (list.length < 2) continue;
-    const cls = list.some(x => x.cls === "hit") ? "hit" : list.every(x => x.cls === "dim") ? "dim" : "";
-    const pts = new Set();
-    for (const { rt } of list) { pts.add(`${rt.bx},${busSide === "source" ? rt.by : rt.ay}`); }
-    const r0 = list[0].rt; pts.add(`${r0.bx},${busSide === "source" ? r0.ay : r0.by}`);
-    for (const p of pts) { const [x, y] = p.split(","); dots += `<circle class="jd ${cls}" cx="${x}" cy="${y}" r="3.2"/>`; }
+  if (bus.length > 1) {
+    const pts = new Set(bus.map(rt => `${rt.lx.toFixed(1)},${(rt.bus === "t" ? rt.ay : rt.by).toFixed(1)}`));
+    const r0 = bus[0]; pts.add(`${r0.lx.toFixed(1)},${(r0.bus === "t" ? r0.by : r0.ay).toFixed(1)}`);
+    for (const pt of pts) { const [x, y] = pt.split(","); dots += `<circle class="jd hit" cx="${x}" cy="${y}" r="3.4"/>`; }
   }
   $("g-dots").innerHTML = dots;
 }
 let anim = null;
 function moveTo(dest, ms = MOVE_MS) {
   cancelAnimationFrame(anim);
-  target = dest;
+  target = dest; computeLanes(dest);
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) ms = 0;
   const from = { ...cur }, t0 = performance.now(), ids = Object.keys(dest);
   const ease = t => 1 - Math.pow(1 - t, 3);
@@ -418,19 +524,40 @@ function drawHeads(heads, coords) {
   $("cols").innerHTML = heads.map(h => `<div class="colhead" style="transform:translate(${h.x}px, ${top}px)">${COL_TITLE[h.c]} (${h.n})</div>`).join("");
 }
 
+/* ---------- the one annotation on the canvas: "start here", until the first selection ---------- */
+let hintId = null;
+const HINT_SPACE = 230;
+function clearHint() { hintId = null; $("hint-svg").innerHTML = ""; $("hint-text").innerHTML = ""; }
+function showHint() {
+  clearHint();
+  if (selected || store.get("hn-started") || vp.getBoundingClientRect().width < 700) return;
+  const procs = nodes.filter(n => n.kind === "process" && layoutAll.coords[n.id]);
+  if (!procs.length) return;
+  hintId = procs.reduce((a, b) => ((b.runs || 0) > (a.runs || 0) ? b : a)).id;
+}
+function positionHint() {
+  if (!hintId || selected) return;
+  const c = layoutAll.coords[hintId];
+  const sx = view.x + c.x * view.k, sy = view.y + (c.y + H / 2) * view.k;
+  const tx = Math.max(12, sx - HINT_SPACE + 8), ty = sy - 58;
+  $("hint-text").innerHTML = `<div class="hint" style="left:${tx}px; top:${ty}px"><b>Start here.</b> Click any part to see what breaks if it changes.</div>`;
+  $("hint-svg").innerHTML = pencilPaths(sketchArrow(tx + 120, ty + 50, sx - 6, sy, 41));
+}
+
 /* ---------- pan & zoom ---------- */
 let view = { x: 0, y: 0, k: 1 }, moved = false;
 const vp = $("viewport"), stage = $("stage");
-function apply(animate) { stage.classList.toggle("animate", !!animate); stage.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.k})`; }
+function apply(animate) { stage.classList.toggle("animate", !!animate); stage.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.k})`; positionHint(); }
 function fit(ids, animate = true) {
   const pts = ids.map(id => target[id] || cur[id]).filter(Boolean);
   if (!pts.length) return;
   const x0 = Math.min(...pts.map(p => p.x)), x1 = Math.max(...pts.map(p => p.x)) + W + 30;
   const y0 = Math.min(...pts.map(p => p.y)) - 44, y1 = Math.max(...pts.map(p => p.y)) + H;
   const r = vp.getBoundingClientRect(), pad = r.width < 560 ? 14 : 44, tbSpace = r.width < 900 ? 0 : 70;
-  const k = Math.min(1.1, (r.width - pad * 2) / (x1 - x0), (r.height - pad * 2 - tbSpace) / (y1 - y0));
+  const hs = hintId && !selected ? HINT_SPACE : 0;
+  const k = Math.min(1.1, (r.width - pad * 2 - hs) / (x1 - x0), (r.height - pad * 2 - tbSpace) / (y1 - y0));
   view = { k: Math.max(0.12, k), x: 0, y: 0 };
-  view.x = (r.width - (x1 - x0) * view.k) / 2 - x0 * view.k;
+  view.x = hs + (r.width - hs - (x1 - x0) * view.k) / 2 - x0 * view.k;
   view.y = (r.height - tbSpace - (y1 - y0) * view.k) / 2 - y0 * view.k;
   apply(animate);
 }
@@ -470,20 +597,20 @@ function setMode(m) {
   if (selected) select(selected, { keepTour: true });
 }
 function clearSel() {
-  selected = null; shown = allIds; busSide = "target";
+  selected = null; shown = allIds; $("edges").classList.add("ov");
   for (const n of nodes) nodeEls[n.id].classList.remove("gone", "focus", "ctx");
-  for (const r of edgeEls) { r.p.classList.remove("dim", "gone", "hit"); r.u.classList.remove("gone", "hit"); }
+  for (const r of edgeEls) { r.p.classList.remove("dim", "gone", "hit", "reach"); r.u.classList.remove("gone", "hit"); }
   drawHeads(layoutAll.heads, layoutAll.coords);
-  moveTo(layoutAll.coords); fit(shown);
+  moveTo(layoutAll.coords); showHint(); fit(shown);
   const url = new URL(location.href); url.searchParams.delete("component"); history.replaceState(null, "", url);
   overview();
 }
 function select(id, opts = {}) {
   if (!byId[id]) return;
   if (!opts.keepTour) stopTour();
-  selected = id;
+  selected = id; store.set("hn-started", "1"); clearHint();
   const up = mode === "impact", hit = reach(id, up);
-  busSide = up ? "target" : "source";
+  $("edges").classList.remove("ov", "hovering"); unhover();
   const ctx = new Set(((up ? out[id] : inn[id]) || []).map(e => up ? e.target : e.source).filter(x => !hit.has(x)));
   const keep = new Set([id, ...hit.keys(), ...ctx]);
   shown = [...keep];
@@ -495,10 +622,12 @@ function select(id, opts = {}) {
   }
   const lit = new Set([id, ...hit.keys()]);
   for (const r of edgeEls) {
-    r.p.classList.remove("dim", "gone", "hit"); r.u.classList.remove("gone", "hit");
+    r.p.classList.remove("dim", "gone", "hit", "reach"); r.u.classList.remove("gone", "hit");
     const { source: s, target: t } = r.e;
+    const touches = up ? t === id : s === id;
     if (!(keep.has(s) && keep.has(t))) { r.p.classList.add("gone"); r.u.classList.add("gone"); }
-    else if (lit.has(s) && lit.has(t)) { r.p.classList.add("hit"); r.u.classList.add("hit"); }
+    else if (lit.has(s) && lit.has(t) && touches) { r.p.classList.add("hit"); r.u.classList.add("hit"); }  // meets the selected part: highlighted
+    else if (lit.has(s) && lit.has(t)) r.p.classList.add("reach");                                     // further along the chain: plain ink
     else r.p.classList.add("dim");
   }
   const lay = layout(shown);
@@ -714,13 +843,19 @@ new ResizeObserver(() => fit(shown, false)).observe(vp);
 
 /* ---------- boot ---------- */
 build(); facts();
-cur = { ...layoutAll.coords }; target = { ...layoutAll.coords }; draw(); drawHeads(layoutAll.heads, layoutAll.coords);
+cur = { ...layoutAll.coords }; target = { ...layoutAll.coords }; computeLanes(target); $("edges").classList.add("ov"); draw(); drawHeads(layoutAll.heads, layoutAll.coords);
 const params = new URLSearchParams(location.search);
 if (params.get("mode") === "deps") setMode("deps");
 const start = params.get("component");
 const startNode = start && (byId[start] || nodes.find(n => n.name.toLowerCase() === start.toLowerCase() || n.des.toLowerCase() === start.toLowerCase()));
 document.body.classList.add("boot");
-if (startNode) select(startNode.id, { instant: true }); else { overview(); fit(shown, false); }
+$("bug-svg").innerHTML = pencilPaths([
+  ...sketchEllipse(13, 12, 7, 5.5, 3), ...sketchEllipse(23.5, 12, 3, 3, 5, 1),
+  sketchLine(9, 8, 5, 2.5, 21, .05, .4), sketchLine(13, 6.8, 13, 1.2, 22, .05, .4), sketchLine(17, 8, 20.5, 2.5, 23, .05, .4),
+  sketchLine(9, 16, 5, 21.5, 24, .05, .4), sketchLine(13, 17.2, 13, 22.8, 25, .05, .4), sketchLine(17, 16, 20.5, 21.5, 26, .05, .4),
+  sketchLine(26, 10, 30, 6, 27, .1, .3), sketchLine(26, 14, 30, 18, 28, .1, .3)], "stroke: var(--ink); stroke-width: 2");
+$("rev-ring").innerHTML = pencilPaths(sketchEllipse(12.5, 23, 10, 8, 9));
+if (startNode) select(startNode.id, { instant: true }); else { overview(); showHint(); fit(shown, false); }
 requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.remove("boot")));
 if (params.get("tour") === "1") startTour();
 </script>
